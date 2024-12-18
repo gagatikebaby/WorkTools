@@ -3,9 +3,9 @@ using System.Data.Common;
 //using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
-using UIDesign.Helper;
+using WorkToolsSln.Helper;
 
-namespace UIDesign.utils
+namespace WorkToolsSln.utils
 {
     public class DBManger
     {

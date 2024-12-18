@@ -1,12 +1,12 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using System.Windows.Input;
-using UIDesign.Model;
-using UIDesign.utils;
+using WorkToolsSln.Model;
+using WorkToolsSln.utils;
 using Wpf.Ui;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
-namespace UIDesign.VIewModel
+namespace WorkToolsSln.VIewModel
 {
     public class DBListVM : ObservableObject
     {

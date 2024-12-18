@@ -2,7 +2,7 @@
 using System.Windows;
 using Wpf.Ui.Controls;
 
-namespace UIDesign.VIewModel
+namespace WorkToolsSln.VIewModel
 {
 public abstract partial class ViewModel : ObservableObject, INavigationAware
 {

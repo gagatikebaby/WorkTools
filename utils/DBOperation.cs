@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 //using System.Data.SQLite;
 using System.IO;
-using UIDesign.Model;
+using WorkToolsSln.Model;
 using Wpf.Ui;
 
-namespace UIDesign.utils
+namespace WorkToolsSln.utils
 {
     public class DBOperation
     {

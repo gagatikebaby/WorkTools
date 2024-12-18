@@ -3,10 +3,10 @@ using System.IO;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
-using UIDesign.utils;
-using UIDesign.View;
+using WorkToolsSln.utils;
+using WorkToolsSln.View;
 using Wpf.Ui.Controls;
-namespace UIDesign
+namespace WorkToolsSln
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

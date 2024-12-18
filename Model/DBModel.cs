@@ -2,7 +2,7 @@
 using CommunityToolkit.Mvvm.Input;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-namespace UIDesign.Model
+namespace WorkToolsSln.Model
 {
     public class DBModel : ObservableObject
     {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace UIDesign.utils
+namespace WorkToolsSln.utils
 {
     public class SqlConnection
     {
@@ -24,7 +24,7 @@ namespace UIDesign.utils
         /// <returns></returns>
         public static string GetMySqlName()
         {
-            connName = Properties.Settings.Default.Context.ToString();
+            connName = WorkToolsSln.Properties.Settings.Default.Context.ToString();
             //WriteDataBaseLog(connName);
             return connName;
         }

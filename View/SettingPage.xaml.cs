@@ -1,9 +1,9 @@
 ﻿using System.Windows;
-using UIDesign.VIewModel;
+using WorkToolsSln.VIewModel;
 using Wpf.Ui.Appearance;
 using Wpf.Ui.Controls;
 
-namespace UIDesign.View
+namespace WorkToolsSln.View
 {
     /// <summary>
     /// Interaction logic for SettingPage.xaml

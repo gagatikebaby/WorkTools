@@ -2,7 +2,7 @@
 using System.Windows.Data;
 using Wpf.Ui.Appearance;
 
-namespace UIDesign.Converts
+namespace WorkToolsSln.Converts
 {
     internal sealed class ThemeConvert : IValueConverter
     {

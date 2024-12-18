@@ -4,10 +4,10 @@ using System.Configuration;
 using System.Data;
 using System.Data.Entity;
 using System.Windows;
-using UIDesign.Helper;
-using UIDesign.utils;
+using WorkToolsSln.Helper;
+using WorkToolsSln.utils;
 
-namespace UIDesign
+namespace WorkToolsSln
 {
     /// <summary>
     /// Interaction logic for App.xaml

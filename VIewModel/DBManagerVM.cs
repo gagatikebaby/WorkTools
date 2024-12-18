@@ -1,10 +1,10 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using System.Windows.Input;
-using UIDesign.utils;
+using WorkToolsSln.utils;
 using Wpf.Ui;
 
-namespace UIDesign.VIewModel
+namespace WorkToolsSln.VIewModel
 {
     public partial class DBManagerVM : ObservableObject
     {
@@ -19,8 +19,6 @@ namespace UIDesign.VIewModel
         {
             SaveCommand = new RelayCommand(SaveCommandExecute);
         }
-
-
 
         public ICommand SaveCommand { get; protected set; }
 

@@ -1,6 +1,6 @@
 ﻿using Wpf.Ui.Controls;
 
-namespace UIDesign.View
+namespace WorkToolsSln.View
 {
     /// <summary>
     /// Interaction logic for UserControl1.xaml

@@ -5,11 +5,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using UIDesign.Model;
+using WorkToolsSln.Model;
 using SQLite.CodeFirst;
 using Microsoft.EntityFrameworkCore;
 
-namespace UIDesign.utils
+namespace WorkToolsSln.utils
 {
 
     public class Glh_DBContext : DbContext

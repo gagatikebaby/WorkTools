@@ -2,8 +2,8 @@
 using Microsoft.Data.Sqlite;
 using System.IO;
 using Microsoft.EntityFrameworkCore;
-using UIDesign.utils;
-namespace UIDesign.Helper
+using WorkToolsSln.utils;
+namespace WorkToolsSln.Helper
 {
     /// <summary>
     /// 数据库管理类

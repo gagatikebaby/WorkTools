@@ -1,14 +1,9 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Media;
 using Wpf.Ui;
 using Wpf.Ui.Appearance;
 
-namespace UIDesign.VIewModel
+namespace WorkToolsSln.VIewModel
 {
     public sealed partial class SettingVM(INavigationService navigationService) : ViewModel
     {

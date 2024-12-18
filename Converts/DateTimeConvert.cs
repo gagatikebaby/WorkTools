@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Windows.Data;
 
-namespace UIDesign.Converts
+namespace WorkToolsSln.Converts
 {
     public class DateTimeConvert : IValueConverter
     {
