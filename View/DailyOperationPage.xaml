@@ -9,7 +9,7 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="SvnOperationPage">
     <StackPanel  Margin="0,0,0,24">
-        <Border Height="40"/>
+        <Border Height="25"/>
         <ui:CardControl Margin="0,0,0,12" Icon="{ui:SymbolIcon Symbol=ArrowDown16}">
             <ui:CardControl.Header>
                 <Grid>
@@ -24,7 +24,7 @@
                     <ui:TextBlock
                         Grid.Row="1"
                         Foreground="{ui:ThemeResource TextFillColorSecondaryBrush}"
-                        Text="Revert并且Updata目标文件夹"  />
+                        Text="包括Revert和Update操作"  />
                 </Grid>
             </ui:CardControl.Header>
             <ui:Button Content="执行" FontSize="20"
@@ -35,7 +35,7 @@
             </ui:Button>
         </ui:CardControl>
 
-        <Border Height="20"/>
+        <Border Height="0"/>
         <ui:CardControl Margin="0,0,0,12" Icon="{ui:SymbolIcon Symbol=ArrowDown16}">
             <ui:CardControl.Header>
                 <Grid>
@@ -46,20 +46,115 @@
                     <ui:TextBlock
                 Grid.Row="0"
                 FontTypography="Body"
-                Text="更新Dependency" />
+                Text="更新Unpackage" />
                     <ui:TextBlock
                 Grid.Row="1"
                 Foreground="{ui:ThemeResource TextFillColorSecondaryBrush}"
-                Text="Revert并且Updata目标文件夹" />
+                Text="包含Revert和Update操作" />
                 </Grid>
             </ui:CardControl.Header>
             <ui:Button Content="执行" FontSize="20"
         Grid.Column="1"
         MinWidth="200"
         MinHeight="40"
-           
         Command="{Binding UnpackageUpataCmd}">
             </ui:Button>
         </ui:CardControl>
+
+        <Border Height="0"/>
+        <ui:CardControl Margin="0,0,0,12" Icon="{ui:SymbolIcon Symbol=ArrowDown16}">
+            <ui:CardControl.Header>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <ui:TextBlock
+                Grid.Row="0"
+                FontTypography="Body"
+                Text="清理Unpackage" />
+                    <ui:TextBlock
+                Grid.Row="1"
+                Foreground="{ui:ThemeResource TextFillColorSecondaryBrush}"
+                Text="包含Clean Up操作" />
+                </Grid>
+            </ui:CardControl.Header>
+            <ui:Button Content="执行" FontSize="20"
+        Grid.Column="1"
+        MinWidth="200"
+        MinHeight="40"
+        Command="{Binding UnpackageCleanUpCmd}">
+            </ui:Button>
+        </ui:CardControl>
+
+        <Border Height="0"/>
+        <ui:CardControl Margin="0,0,0,12" Icon="{ui:SymbolIcon Symbol=ArrowDown16}">
+            <ui:CardControl.Header>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <ui:TextBlock
+                Grid.Row="0"
+                FontTypography="Body"
+                Text="合成包" />
+                    <ui:TextBlock
+                Grid.Row="1"
+                Foreground="{ui:ThemeResource TextFillColorSecondaryBrush}"
+                Text="复制Dependency到Unpackage" />
+                </Grid>
+            </ui:CardControl.Header>
+            <ui:Button Content="执行" FontSize="20"
+        Grid.Column="1"
+        MinWidth="200"
+        MinHeight="40"
+        Command="{Binding Denpenency2UnpackageCmd}">
+            </ui:Button>
+        </ui:CardControl>
+
+        <Border Height="0"/>
+        <ui:CardControl Margin="0,0,0,12" Icon="{ui:SymbolIcon Symbol=ArrowDown16}">
+            <ui:CardControl.Header>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <ui:TextBlock
+                    Grid.Row="0"
+                    FontTypography="Body"
+                    Text="检出Unpackage文件" />
+                    <ui:TextBlock
+                    Grid.Row="1"
+                    Foreground="{ui:ThemeResource TextFillColorSecondaryBrush}"
+                    Text="包含Checkout操作" />
+                </Grid>
+            </ui:CardControl.Header>
+            <ui:Button Content="执行" FontSize="20"
+            Grid.Column="1"
+            MinWidth="200"
+            MinHeight="40"
+            Command="{Binding UnpackageCheckoutCmd}">
+            </ui:Button>
+        </ui:CardControl>
+        <ui:DataGrid AutoGenerateColumns="False" HeadersVisibility="None"
+          CanUserAddRows="False" ItemsSource="{Binding ButtonList,Mode=TwoWay}"
+          RowHeight="50" Width="auto" Height="auto">
+            <DataGrid.Columns>
+                <!-- 按钮列 -->
+                <DataGridTemplateColumn Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="{Binding Content}" 
+                            Command="{Binding ClickCommand}" 
+                            Width="100" Height="30"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </ui:DataGrid>
+
+
     </StackPanel>
 </Page>

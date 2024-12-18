@@ -9,7 +9,10 @@ using WorkToolsSln.VIewModel;
 using WorkToolsSln.Helper;
 using WorkToolsSln.Model;
 using Wpf.Ui;
+using System.ComponentModel;
 using SharpSvn.UI;
+using System.Collections.ObjectModel;
+using System.Windows.Controls;
 
 namespace WorkToolsSln.VIewModel
 {
@@ -18,11 +21,31 @@ namespace WorkToolsSln.VIewModel
         private readonly INavigationService _navigationService;
         private PathConfigInfo pathConfigInfo { get; set; }
         private readonly string ConfigPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Configuration", "PathConfig.json");
+
+        public ObservableCollection<ButtonItem> ButtonList;
+
         public DailyOperationVM(INavigationService navigationService)
         {
             _navigationService = navigationService;
             InitCommand();
+            InitUI();
             pathConfigInfo = FileOperation.ReadConfig<PathConfigInfo>(ConfigPath);
+        }
+
+        private void InitUI()
+        {
+            ButtonList = new ObservableCollection<ButtonItem>
+            {
+                new ButtonItem { Content = "按钮1", ClickCommand = new RelayCommand(() => MessageBox.Show("按钮1被点击")) },
+                new ButtonItem { Content = "按钮2", ClickCommand = new RelayCommand(() => MessageBox.Show("按钮2被点击")) },
+                new ButtonItem { Content = "按钮3", ClickCommand = new RelayCommand(() => MessageBox.Show("按钮3被点击")) },
+                new ButtonItem { Content = "按钮4", ClickCommand = new RelayCommand(() => MessageBox.Show("按钮4被点击")) },
+                new ButtonItem { Content = "按钮5", ClickCommand = new RelayCommand(() => MessageBox.Show("按钮5被点击")) },
+                new ButtonItem { Content = "按钮6", ClickCommand = new RelayCommand(() => MessageBox.Show("按钮6被点击")) },
+                new ButtonItem { Content = "按钮7", ClickCommand = new RelayCommand(() => MessageBox.Show("按钮7被点击")) },
+                new ButtonItem { Content = "按钮8", ClickCommand = new RelayCommand(() => MessageBox.Show("按钮8被点击")) },
+                new ButtonItem { Content = "按钮9", ClickCommand = new RelayCommand(() => MessageBox.Show("按钮9被点击")) },
+            };
         }
 
         private void InitCommand()
