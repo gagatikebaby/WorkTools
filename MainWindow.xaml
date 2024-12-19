@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
         xmlns:Views ="clr-namespace:WorkToolsSln.View"
-        Title="lz记账本"
+        Title="WorkTools"
         Height="800" 
         Width="1200"
         ResizeMode="CanResize"

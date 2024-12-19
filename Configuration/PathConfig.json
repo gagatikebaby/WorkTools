@@ -1,5 +1,15 @@
 {
     "DependencyPath":"D:\\Master\\Dependency",
     "UnpackagePath" :"D:\\Master\\Unpackage",
-    "SvnURL":"https://221.203.209.90:4454/svn/sourcecode/Unpackage"
+    "SvnURL":"https://221.203.209.90:4454/svn/sourcecode/Unpackage",
+    "VisualStudioPath":"",
+    "MasterPath":"",
+    "Q580Cfg1":"",
+    "T750Cfg1":"",
+    "Pet750Cfg1":"",
+    "workStation":{
+        "Code":"",
+        "PassWord":""
+    }
+
 }

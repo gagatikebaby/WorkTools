@@ -44,5 +44,42 @@
                 <ComboBoxItem Content="High Contrast" />
             </ComboBox>
         </ui:CardControl>
+
+        <ItemsControl ItemsSource="{Binding ViewModel.WindowCards, Mode=OneWay}">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate >
+                    <ui:CardAction
+                        Margin="4"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch"
+                        Command="{Binding ViewModel.OpenWindowCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:WindowsPage}, Mode=OneWay}"
+                        CommandParameter="{Binding Value, Mode=OneTime}"
+                        Icon="{Binding Icon, Mode=OneTime}"
+                        IsChevronVisible="True">
+                        <StackPanel>
+                            <ui:TextBlock
+                                Margin="0"
+                                FontTypography="BodyStrong"
+                                Text="{Binding Name, Mode=OneTime}"
+                                TextWrapping="WrapWithOverflow" />
+                            <ui:TextBlock
+                                Appearance="Tertiary"
+                                Text="{Binding Description, Mode=OneTime}"
+                                TextWrapping="WrapWithOverflow" />
+                        </StackPanel>
+                    </ui:CardAction>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <ui:VirtualizingWrapPanel
+                        IsItemsHost="True"
+                        ItemSize="290,80"
+                        Orientation="Vertical"
+                        SpacingMode="Uniform"
+                        StretchItems="True" />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+        </ItemsControl>
     </StackPanel>
 </Page>
