@@ -4,19 +4,19 @@ using Wpf.Ui.Controls;
 namespace WorkToolsSln.View
 {
     /// <summary>
-    /// Interaction logic for SvnOperationPage.xaml
+    /// Interaction logic for DailyOperationPage.xaml
     /// </summary>
-    public partial class SvnOperationPage : INavigableView<DailyOperationVM>
+    public partial class DailyOperationPage : INavigableView<DailyOperationVM>
     {
         public DailyOperationVM ViewModel { get;  }
-        public SvnOperationPage()
+        public DailyOperationPage()
         {
             ViewModel = new DailyOperationVM(navigationService: null);
             InitializeComponent();
             this.DataContext = ViewModel;
         }
 
-        public SvnOperationPage(DailyOperationVM viewModel)
+        public DailyOperationPage(DailyOperationVM viewModel)
         {
             ViewModel = viewModel;
             DataContext = this;

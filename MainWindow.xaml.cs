@@ -17,7 +17,7 @@ namespace WorkToolsSln
         {
             InitializeComponent(); // 必须调用此方法来初始化XAML定义的UI组件
             LoadICON();
-            Loaded += (_, _) => RootNavigation.Navigate(typeof(DBManagerPage));
+            Loaded += (_, _) => RootNavigation.Navigate(typeof(DailyOperationPage));
            
         }
 
