@@ -18,7 +18,7 @@ namespace WorkToolsSln.View
 
         public SettingPage()
         {
-            ViewModel = new SettingVM(navigationService: null);
+            ViewModel = new SettingVM(_windowsSrc: null);
             DataContext = this;
 
             InitializeComponent();

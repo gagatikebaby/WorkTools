@@ -19,6 +19,9 @@
     <Compile Update="View\DailyOperationPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="View\SubWindows\FilePathSettingWin.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="MainWindow.xaml">
@@ -34,6 +37,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\DailyOperationPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\SubWindows\FilePathSettingWin.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
