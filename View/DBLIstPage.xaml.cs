@@ -9,14 +9,6 @@ namespace WorkToolsSln.View
     {
         public VIewModel.DBListVM ViewModel { get; }
 
-        public DBListPage()
-        {
-            ViewModel = new VIewModel.DBListVM(navigationService: null);
-            InitializeComponent();
-            DataContext = ViewModel;
-            this.Loaded += DBListPage_Loaded;
-        }
-
         private void DBListPage_Loaded(object sender, System.Windows.RoutedEventArgs e)
         {
             ViewModel.RefreshList();
@@ -25,9 +17,9 @@ namespace WorkToolsSln.View
         public DBListPage(VIewModel.DBListVM viewModel)
         {
             ViewModel = viewModel;
-            DataContext = this;
-
+            DataContext = ViewModel;
             InitializeComponent();
+            this.Loaded += DBListPage_Loaded;
         }
     }
 }

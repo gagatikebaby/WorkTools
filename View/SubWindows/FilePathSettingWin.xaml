@@ -32,14 +32,14 @@
                     <ui:TextBlock
                 Grid.Row="0"
                 FontTypography="Body"
-                Text="{Binding DependencyPath}" />
+                Text="{Binding OpenedFolderPath}" />
                 </Grid>
             </ui:CardControl.Header>
             <ui:Button Content="选择路径" FontSize="20"
                 Grid.Column="1"
                 MinWidth="200"
                 MinHeight="40"
-                Command="{Binding SelectDependencyPath}">
+                Command="{Binding SelectDependcyPathCommand}">
             </ui:Button>
         </ui:CardControl>
 

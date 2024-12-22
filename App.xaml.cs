@@ -7,9 +7,13 @@ using System.Configuration;
 using System.Data;
 using System.Data.Entity;
 using System.Windows;
+using System.Windows.Threading;
 using WorkToolsSln.Helper;
 using WorkToolsSln.Service;
+using WorkToolsSln.Service.Contracts;
 using WorkToolsSln.utils;
+using WorkToolsSln.View;
+using WorkToolsSln.VIewModel;
 using Wpf.Ui;
 
 namespace WorkToolsSln
@@ -19,26 +23,49 @@ namespace WorkToolsSln
     /// </summary>
     public partial class App : Application
     {
-        protected override void OnStartup(StartupEventArgs e)
+        private void OnStartup(object sender, StartupEventArgs e)
         {
-            base.OnStartup(e);
+            SQLiteHelper.InitializeDatabase();
 
             _host.Start();
-            // 初始化数据库
-            SQLiteHelper.InitializeDatabase();
         }
+        //protected override void OnStartup(StartupEventArgs e)
+        //{
+        //    SQLiteHelper.InitializeDatabase();
+
+
+        //    _host.Start();
+        //    // 初始化数据库
+        //    //base.OnStartup(e);
+        //}
 
         private static readonly IHost _host = Host.CreateDefaultBuilder()
             .ConfigureAppConfiguration(c =>
             {
-                c.SetBasePath(AppContext.BaseDirectory);
+                _ = c.SetBasePath(AppContext.BaseDirectory);
             })
             .ConfigureServices(
-            (_, services) =>
+            (_1, services) =>
             {
-                //services.AddHostedService<ApplicationHostService>();
-                services.AddSingleton<INavigationService, NavigationService>();
-                services.AddSingleton<WindowsSrc>();
+                _ = services.AddHostedService<ApplicationHostService>();
+
+                _ = services.AddSingleton<IWindow, MainWindow>();
+                _ = services.AddSingleton<INavigationService, NavigationService>();
+                _ = services.AddSingleton<ISnackbarService, SnackbarService>();
+                _ = services.AddSingleton<IContentDialogService, ContentDialogService>();
+                
+                _ = services.AddSingleton<WindowsSrc>();
+
+                // Top-level pages
+                _ = services.AddSingleton<DBManagerPage>();
+                _ = services.AddSingleton<DBManagerVM>();
+                _ = services.AddSingleton<DBListPage>();
+                _ = services.AddSingleton<DBListVM>();
+                _ = services.AddSingleton<DailyOperationPage>();
+                _ = services.AddSingleton<DailyOperationVM>();
+                _ = services.AddSingleton<SettingPage>();
+                _ = services.AddSingleton<SettingVM>();
+                //_ = services.AddSingleton<WindowsSrc, SettingVM>();
             }
             )
             .Build();
@@ -63,6 +90,16 @@ namespace WorkToolsSln
 
             _host.Dispose();
         }
+
+        /// <summary>
+        /// Occurs when an exception is thrown by an application but not handled.
+        /// </summary>
+        private void OnDispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
+        {
+            // For more info see https://docs.microsoft.com/en-us/dotnet/api/system.windows.application.dispatcherunhandledexception?view=windowsdesktop-6.0
+        }
+
+
     }
 
 }

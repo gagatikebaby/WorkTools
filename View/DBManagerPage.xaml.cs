@@ -1,4 +1,5 @@
-﻿using Wpf.Ui;
+﻿using WorkToolsSln.VIewModel;
+using Wpf.Ui;
 using Wpf.Ui.Controls;
 
 
@@ -11,19 +12,19 @@ namespace WorkToolsSln.View
     {
         public VIewModel.DBManagerVM ViewModel { get; }
 
-        public DBManagerPage()
-        {
-            ViewModel = new VIewModel.DBManagerVM(navigationService: null);
-            InitializeComponent();
-            DataContext = ViewModel;
-        }
-
-        public DBManagerPage(VIewModel.DBManagerVM viewModel)
+        public DBManagerPage(DBManagerVM viewModel)
         {
             ViewModel = viewModel;
-            DataContext = this;
+            DataContext = ViewModel;
 
             InitializeComponent();
         }
+
+        //public DBManagerPage()
+        //{
+        //    ViewModel = new VIewModel.DBManagerVM(navigationService: null);
+        //    InitializeComponent();
+        //    DataContext = ViewModel;
+        //}
     }
 }

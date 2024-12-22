@@ -36,7 +36,6 @@ namespace WorkToolsSln.VIewModel
 
         private void DeleteListItemExecute()
         {
-            //DBOperation.Instance.AddRecord(Number, Price);
             DBOperation.Instance.DeleteRecord(ReportInfo.SelectedRecordInfo.DbInstanceUID);
             RefreshList();
         }
