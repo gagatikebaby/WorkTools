@@ -1,6 +1,8 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using System.IO;
 using System.Windows.Media;
+using WorkToolsSln.Helper;
 using WorkToolsSln.Model;
 using WorkToolsSln.Service;
 using WorkToolsSln.View.SubWindows;
@@ -22,19 +24,20 @@ namespace WorkToolsSln.VIewModel
         {
         new("路径配置", "设置文件夹路径及授权码", SymbolRegular.DocumentSettings16, "PathSetting"),
         };
-
+        private readonly string ConfigPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Configuration", "GlobalConfig.json");
+        private GlobalConfig _globalConfig = new GlobalConfig();
         public override void OnNavigatedTo()
         {
             if (!_isInitialized)
             {
                 InitializeViewModel();
             }
+            
         }
 
         private void InitializeViewModel()
         {
             CurrentApplicationTheme = ApplicationThemeManager.GetAppTheme();
-
             ApplicationThemeManager.Changed += OnThemeChanged;
             _isInitialized = true;
         }
@@ -51,6 +54,9 @@ namespace WorkToolsSln.VIewModel
         partial void OnCurrentApplicationThemeChanged(ApplicationTheme oldValue, ApplicationTheme newValue)
         {
             ApplicationThemeManager.Apply(newValue);
+
+            _globalConfig.Theme = newValue.ToString();
+            FileOperation.WriteConfig<GlobalConfig>(ConfigPath, _globalConfig);
         }
 
         [RelayCommand]

@@ -28,6 +28,7 @@ namespace WorkToolsSln
             SQLiteHelper.InitializeDatabase();
 
             _host.Start();
+
         }
         //protected override void OnStartup(StartupEventArgs e)
         //{
@@ -38,7 +39,6 @@ namespace WorkToolsSln
         //    // 初始化数据库
         //    //base.OnStartup(e);
         //}
-
         private static readonly IHost _host = Host.CreateDefaultBuilder()
             .ConfigureAppConfiguration(c =>
             {

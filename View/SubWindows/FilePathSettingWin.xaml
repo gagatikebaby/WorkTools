@@ -22,7 +22,7 @@
         </ui:TitleBar>
 
         <Border Height="28"/>
-        <ui:CardControl Margin="0,0,0,12" Icon="{ui:SymbolIcon Symbol=ArrowDown16}">
+        <ui:CardControl Margin="0,0,0,12" Icon="{ui:SymbolIcon Symbol=CalendarEdit16}">
             <ui:CardControl.Header>
                 <Grid>
                     <Grid.RowDefinitions>
@@ -33,6 +33,10 @@
                 Grid.Row="0"
                 FontTypography="Body"
                 Text="{Binding DependencyPath}" />
+                    <ui:TextBlock
+    Grid.Row="1"
+    Foreground="{ui:ThemeResource TextFillColorSecondaryBrush}"
+    Text="Dependency路径"  FontSize="12" />
                 </Grid>
             </ui:CardControl.Header>
             <ui:Button Content="选择路径" FontSize="20"
@@ -44,7 +48,7 @@
         </ui:CardControl>
 
         <Border Height="0"/>
-        <ui:CardControl Margin="0,0,0,12" Icon="{ui:SymbolIcon Symbol=ArrowDown16}">
+        <ui:CardControl Margin="0,0,0,12" Icon="{ui:SymbolIcon Symbol=CalendarEdit16}">
             <ui:CardControl.Header>
                 <Grid>
                     <Grid.RowDefinitions>
@@ -55,6 +59,10 @@
         Grid.Row="0"
         FontTypography="Body"
         Text="{Binding UnpackagePath}" />
+                    <ui:TextBlock
+Grid.Row="1"
+Foreground="{ui:ThemeResource TextFillColorSecondaryBrush}"
+Text="Unpackage路径"  FontSize="12" />
                 </Grid>
             </ui:CardControl.Header>
             <ui:Button Content="选择路径" FontSize="20"
@@ -62,6 +70,33 @@
         MinWidth="200"
         MinHeight="40"
         Command="{Binding SelectUnpackagePathCommand}">
+            </ui:Button>
+        </ui:CardControl>
+
+        <Border Height="0"/>
+        <ui:CardControl Margin="0,0,0,12" Icon="{ui:SymbolIcon Symbol=CalendarEdit16}">
+            <ui:CardControl.Header>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <ui:TextBlock
+        Grid.Row="0"
+        FontTypography="Body"
+        Text="{Binding VisualStdioPath}" />
+                    <ui:TextBlock
+Grid.Row="1"
+Foreground="{ui:ThemeResource TextFillColorSecondaryBrush}"
+Text="Visual Stdio路径"  FontSize="12" />
+                </Grid>
+            </ui:CardControl.Header>
+            
+            <ui:Button Content="选择路径" FontSize="20"
+        Grid.Column="1"
+        MinWidth="200"
+        MinHeight="40"
+        Command="{Binding VisualStudioPathCommand}">
             </ui:Button>
         </ui:CardControl>
     </StackPanel>

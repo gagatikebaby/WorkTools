@@ -20,6 +20,8 @@ namespace WorkToolsSln.VIewModel
         [ObservableProperty]
         private string _unpackagePath = string.Empty;
 
+        [ObservableProperty]
+        private string _visualStdioPath = string.Empty;
 
         private readonly string ConfigPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Configuration", "PathConfig.json");
         private PathConfigInfo _PathList = new PathConfigInfo();
@@ -28,6 +30,7 @@ namespace WorkToolsSln.VIewModel
             _PathList = FileOperation.ReadConfig<PathConfigInfo>(ConfigPath);
             DependencyPath = _PathList.DependencyPath;
             UnpackagePath = _PathList.UnpackagePath;
+            VisualStdioPath = _PathList.VisualStudioPath;
         }
 
         [RelayCommand]
@@ -43,6 +46,7 @@ namespace WorkToolsSln.VIewModel
             FileOperation.WriteConfig<PathConfigInfo>(ConfigPath, _PathList);
         }
 
+        [RelayCommand]
         public void OnSelectUnpackagePath()
         {
             string selsctpath = SelectFolder();
@@ -55,6 +59,20 @@ namespace WorkToolsSln.VIewModel
             _PathList.UnpackagePath = UnpackagePath;
             FileOperation.WriteConfig<PathConfigInfo>(ConfigPath, _PathList);
         }
+
+        [RelayCommand]
+        public void OnVisualStudioPath()
+        {
+            string ret = SelectFile();
+            if (string.IsNullOrEmpty(ret))
+            {
+                return;
+            }
+            VisualStdioPath = ret;
+            _PathList.VisualStudioPath = VisualStdioPath;
+            FileOperation.WriteConfig<PathConfigInfo>(ConfigPath, _PathList);
+        }
+
 
         private string SelectFolder()
         {
@@ -77,5 +95,24 @@ namespace WorkToolsSln.VIewModel
             // 返回选中的路径
             return string.Join("\n", openFolderDialog.FolderNames);
         }
+
+        private string SelectFile()
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog
+            {
+                Multiselect = false,  // 不允许多选
+                Filter = "Executable Files (*.exe)|*.exe",  // 设置文件类型过滤器，只允许选择 .exe 文件
+                InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) // 设置初始文件夹
+            };
+
+            if (openFileDialog.ShowDialog() != true)
+            {
+                return null;  // 如果用户没有选择文件，返回 null
+            }
+
+            // 返回选中的文件路径
+            return openFileDialog.FileName;
+        }
+
     }
 }

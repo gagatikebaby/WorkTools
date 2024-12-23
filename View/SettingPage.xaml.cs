@@ -11,18 +11,6 @@ namespace WorkToolsSln.View
     public partial class SettingPage : INavigableView<SettingVM>
     {
         public SettingVM ViewModel { get; }
-        //public SettingPage()
-        //{
-        //    InitializeComponent();
-        //}
-
-        public SettingPage()
-        {
-            ViewModel = new SettingVM(_windowsSrc: null);
-            DataContext = this;
-
-            InitializeComponent();
-        }
 
         public SettingPage(SettingVM viewModel)
         {
