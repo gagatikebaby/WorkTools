@@ -32,7 +32,7 @@
                     <ui:TextBlock
                 Grid.Row="0"
                 FontTypography="Body"
-                Text="{Binding OpenedFolderPath}" />
+                Text="{Binding DependencyPath}" />
                 </Grid>
             </ui:CardControl.Header>
             <ui:Button Content="选择路径" FontSize="20"
@@ -43,5 +43,26 @@
             </ui:Button>
         </ui:CardControl>
 
+        <Border Height="0"/>
+        <ui:CardControl Margin="0,0,0,12" Icon="{ui:SymbolIcon Symbol=ArrowDown16}">
+            <ui:CardControl.Header>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <ui:TextBlock
+        Grid.Row="0"
+        FontTypography="Body"
+        Text="{Binding UnpackagePath}" />
+                </Grid>
+            </ui:CardControl.Header>
+            <ui:Button Content="选择路径" FontSize="20"
+        Grid.Column="1"
+        MinWidth="200"
+        MinHeight="40"
+        Command="{Binding SelectUnpackagePathCommand}">
+            </ui:Button>
+        </ui:CardControl>
     </StackPanel>
 </ui:FluentWindow>
