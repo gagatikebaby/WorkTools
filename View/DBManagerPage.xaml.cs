@@ -19,12 +19,5 @@ namespace WorkToolsSln.View
 
             InitializeComponent();
         }
-
-        //public DBManagerPage()
-        //{
-        //    ViewModel = new VIewModel.DBManagerVM(navigationService: null);
-        //    InitializeComponent();
-        //    DataContext = ViewModel;
-        //}
     }
 }

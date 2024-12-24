@@ -41,13 +41,12 @@
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </ui:GridViewColumn>
-                    <ui:GridViewColumn Header="支出" DisplayMemberBinding="{Binding Number}" Width="100"/>
-                    <ui:GridViewColumn Header="收入" DisplayMemberBinding="{Binding Price}" Width="100"/>
+                    <ui:GridViewColumn Header="操作" DisplayMemberBinding="{Binding Number}" Width="100"/>
                 </ui:GridView>
             </ui:ListView.View>
         </ui:ListView>
 
-        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="1" Grid.Row="2">
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="1" Grid.Row="2" Visibility="Collapsed">
             <ui:TextBlock Text="合计支出：" FontSize="25"/>
             <ui:TextBlock Text="{Binding TotalExpenses}" MinWidth="100"  FontSize="25"/>
 
