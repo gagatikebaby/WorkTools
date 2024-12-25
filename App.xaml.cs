@@ -57,10 +57,10 @@ namespace WorkToolsSln
                 _ = services.AddSingleton<WindowsSrc>();
 
                 // Top-level pages
-                _ = services.AddSingleton<DBManagerPage>();
-                _ = services.AddSingleton<DBManagerVM>();
-                _ = services.AddSingleton<DBListPage>();
-                _ = services.AddSingleton<DBListVM>();
+                _ = services.AddSingleton<DataDisplayPage>();
+                _ = services.AddSingleton<DataDisplayVM>();
+                _ = services.AddSingleton<OperationLogPage>();
+                _ = services.AddSingleton<OperationLogVM>();
                 _ = services.AddSingleton<DailyOperationPage>();
                 _ = services.AddSingleton<DailyOperationVM>();
                 _ = services.AddSingleton<SettingPage>();

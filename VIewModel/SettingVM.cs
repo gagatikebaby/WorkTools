@@ -5,7 +5,7 @@ using System.Windows.Media;
 using WorkToolsSln.Helper;
 using WorkToolsSln.Model;
 using WorkToolsSln.Service;
-using WorkToolsSln.View.SubWindows;
+using WorkToolsSln.View.Windows;
 using Wpf.Ui;
 using Wpf.Ui.Appearance;
 using Wpf.Ui.Controls;
@@ -67,12 +67,12 @@ namespace WorkToolsSln.VIewModel
                 return;
             }
 
-            FilePathSettingWin ui = new FilePathSettingWin();
+            PathSettingWin ui = new PathSettingWin();
             //_windowsSrc = new WindowsSrc(serviceProvider : null);
             switch (value)
             {
                 case "PathSetting":
-                    //_windowsSrc.Show<FilePathSettingWin>();
+                    //_windowsSrc.Show<PathSettingWin>();
                     ui.Show();
                     break;
             }

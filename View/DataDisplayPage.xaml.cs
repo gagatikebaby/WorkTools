@@ -8,11 +8,11 @@ namespace WorkToolsSln.View
     /// <summary>
     /// Interaction logic for UIDataBaseManager.xaml
     /// </summary>
-    public partial class DBManagerPage : INavigableView<VIewModel.DBManagerVM>
+    public partial class DataDisplayPage : INavigableView<VIewModel.DataDisplayVM>
     {
-        public VIewModel.DBManagerVM ViewModel { get; }
+        public VIewModel.DataDisplayVM ViewModel { get; }
 
-        public DBManagerPage(DBManagerVM viewModel)
+        public DataDisplayPage(DataDisplayVM viewModel)
         {
             ViewModel = viewModel;
             DataContext = ViewModel;

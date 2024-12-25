@@ -48,7 +48,7 @@
                 <ui:NavigationViewItem
         Content="数据"
         NavigationCacheMode="Enabled"
-        TargetPageType="{x:Type Views:DBManagerPage}">
+        TargetPageType="{x:Type Views:DataDisplayPage}">
                     <ui:NavigationViewItem.Icon>
                         <ui:SymbolIcon Symbol="CalendarDataBar16" />
                     </ui:NavigationViewItem.Icon>
@@ -57,7 +57,7 @@
                 <ui:NavigationViewItem
 Content="日志"
 NavigationCacheMode="Enabled"
-TargetPageType="{x:Type Views:DBListPage}">
+TargetPageType="{x:Type Views:OperationLogPage}">
                     <ui:NavigationViewItem.Icon>
                         <ui:SymbolIcon Symbol="List16" />
                     </ui:NavigationViewItem.Icon>

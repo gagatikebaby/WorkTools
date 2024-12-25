@@ -5,16 +5,16 @@ namespace WorkToolsSln.View
     /// <summary>
     /// Interaction logic for UserControl1.xaml
     /// </summary>
-    public partial class DBListPage : INavigableView<VIewModel.DBListVM>
+    public partial class OperationLogPage : INavigableView<VIewModel.OperationLogVM>
     {
-        public VIewModel.DBListVM ViewModel { get; }
+        public VIewModel.OperationLogVM ViewModel { get; }
 
         private void DBListPage_Loaded(object sender, System.Windows.RoutedEventArgs e)
         {
             ViewModel.RefreshList();
         }
 
-        public DBListPage(VIewModel.DBListVM viewModel)
+        public OperationLogPage(VIewModel.OperationLogVM viewModel)
         {
             ViewModel = viewModel;
             DataContext = ViewModel;

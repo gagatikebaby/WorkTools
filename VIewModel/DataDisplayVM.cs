@@ -10,7 +10,7 @@ using Wpf.Ui;
 
 namespace WorkToolsSln.VIewModel
 {
-    public partial class DBManagerVM : ObservableObject
+    public partial class DataDisplayVM : ObservableObject
     {
         private readonly INavigationService _navigationService;
         private AboutConfig _aboutConfig { get; set; }
@@ -21,7 +21,7 @@ namespace WorkToolsSln.VIewModel
         private PathConfigInfo _pathConfigInfo { get; set; }
         private readonly string ConfigPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Configuration", "PathConfig.json");
 
-        public DBManagerVM(INavigationService navigationService)
+        public DataDisplayVM(INavigationService navigationService)
         {
             _navigationService = navigationService;
             ReadConfig();

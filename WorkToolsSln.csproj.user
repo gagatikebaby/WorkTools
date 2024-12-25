@@ -7,10 +7,10 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
-    <Compile Update="View\DBManagerPage.xaml.cs">
+    <Compile Update="View\DataDisplayPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="View\DBLIstPage.xaml.cs">
+    <Compile Update="View\OperationLogPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="View\SettingPage.xaml.cs">
@@ -19,7 +19,7 @@
     <Compile Update="View\DailyOperationPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="View\SubWindows\FilePathSettingWin.xaml.cs">
+    <Compile Update="View\Windows\PathSettingWin.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -27,10 +27,10 @@
     <Page Update="MainWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="View\DBManagerPage.xaml">
+    <Page Update="View\DataDisplayPage.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="View\DBLIstPage.xaml">
+    <Page Update="View\OperationLogPage.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\SettingPage.xaml">
@@ -39,7 +39,7 @@
     <Page Update="View\DailyOperationPage.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="View\SubWindows\FilePathSettingWin.xaml">
+    <Page Update="View\Windows\PathSettingWin.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

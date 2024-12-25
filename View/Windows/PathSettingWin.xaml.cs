@@ -2,15 +2,15 @@
 using Wpf.Ui.Controls;
 
 
-namespace WorkToolsSln.View.SubWindows
+namespace WorkToolsSln.View.Windows
 {
     /// <summary>
-    /// Interaction logic for FilePathSettingWin.xaml
+    /// Interaction logic for PathSettingWin.xaml
     /// </summary>
-    public partial class FilePathSettingWin 
+    public partial class PathSettingWin 
     {
         private SubWindowsVM _viewModel;
-        public FilePathSettingWin()
+        public PathSettingWin()
         {
             InitializeComponent();
             _viewModel = new SubWindowsVM();

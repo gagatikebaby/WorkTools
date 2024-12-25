@@ -8,11 +8,11 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace WorkToolsSln.VIewModel
 {
-    public class DBListVM : ObservableObject
+    public class OperationLogVM : ObservableObject
     {
         private readonly INavigationService _navigationService;
         
-        public DBListVM(INavigationService navigationService)
+        public OperationLogVM(INavigationService navigationService)
         {
             _navigationService = navigationService;
             ReportInfo = new RecordListInfo();
