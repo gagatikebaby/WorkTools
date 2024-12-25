@@ -14,6 +14,7 @@ namespace WorkToolsSln.Model
 
         public string MasterPath { get; set; }
 
+        public string SoftWarePath { get; set; }
         /// <summary>
         /// Dependency路径
         /// </summary>

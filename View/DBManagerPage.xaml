@@ -14,60 +14,58 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <GroupBox Grid.Column="1" Grid.Row="0" Margin="0 50 0 0" Header="Master" Foreground="{ui:ThemeResource TextFillColorPrimaryBrush}">
             <StackPanel Orientation="Vertical"  VerticalAlignment="Center" HorizontalAlignment="Center">
                 <StackPanel Orientation="Horizontal"  VerticalAlignment="Center"  HorizontalAlignment="Center">
-                    <ui:TextBlock Text="版本号：" Height="auto" Width="80" FontWeight="Bold" FontSize="15" Foreground="{ui:ThemeResource TextFillColorPrimaryBrush}" />
-                    <ui:TextBlock x:Name="TB_Price" Text="{Binding Price}" Foreground="{ui:ThemeResource TextFillColorPrimaryBrush}"
+                    <ui:TextBlock Text="版 本 号：" Height="auto" Width="100" FontWeight="Bold" FontSize="18" Foreground="{ui:ThemeResource TextFillColorPrimaryBrush}" />
+                    <ui:TextBlock x:Name="TB_Version" Text="{Binding Version}" Foreground="{ui:ThemeResource TextFillColorPrimaryBrush}"
                         Height="auto" Width="140" 
-                        FontSize="15"/>
+                        FontSize="18"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal"  VerticalAlignment="Center"  HorizontalAlignment="Center">
-                    <ui:TextBlock Text="机型：" Height="auto" Width="80" FontWeight="Bold" FontSize="15" Foreground="{ui:ThemeResource TextFillColorPrimaryBrush}" />
-                    <ui:TextBlock x:Name="TB_MachineType" Text="{Binding Price}" 
+                    <ui:TextBlock Text="机 型：" Height="auto" Width="100" FontWeight="Bold" FontSize="18" Foreground="{ui:ThemeResource TextFillColorPrimaryBrush}" />
+                    <ui:TextBlock x:Name="TB_MachineType" Text="{Binding MachineType}" 
                         Height="auto" Width="140" Foreground="{ui:ThemeResource TextFillColorPrimaryBrush}"
-                        FontSize="15"/>
+                        FontSize="18"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal"  VerticalAlignment="Center"  HorizontalAlignment="Center">
-                    <ui:TextBlock Text="产品类型：" Height="auto" Width="80" FontWeight="Bold" FontSize="15" Foreground="{ui:ThemeResource TextFillColorPrimaryBrush}" />
-                    <ui:TextBlock x:Name="TB_ProductType" Text="{Binding Price}" 
+                    <ui:TextBlock Text="产 品 类 型:" Height="auto" Width="100" FontWeight="Bold" FontSize="18" Foreground="{ui:ThemeResource TextFillColorPrimaryBrush}" />
+                    <ui:TextBlock x:Name="TB_ProductType" Text="{Binding ProductType}" 
                         Height="auto" Width="140" Foreground="{ui:ThemeResource TextFillColorPrimaryBrush}"
-                        FontSize="15"/>
+                        FontSize="18"/>
                 </StackPanel>
             </StackPanel>
         </GroupBox>
-
-        <GroupBox Grid.Column="1" Grid.Row="1" Margin="0 50 0 0" Header="QuantumLegends" Foreground="{ui:ThemeResource TextFillColorPrimaryBrush}">
+        
+        <GroupBox Grid.Column="1" Grid.Row="1" Margin="0 50 0 0" Header="D:Quantum" Foreground="{ui:ThemeResource TextFillColorPrimaryBrush}">
             <StackPanel Orientation="Vertical"  VerticalAlignment="Center"  HorizontalAlignment="Center">
                 <StackPanel Orientation="Horizontal"  VerticalAlignment="Center"  HorizontalAlignment="Center">
-                    <ui:TextBlock Text="版本号：" Height="auto" Width="80" FontWeight="Bold" FontSize="15"  Foreground="{ui:ThemeResource TextFillColorPrimaryBrush}" />
-                    <ui:TextBlock x:Name="TB_Price_D" Text="{Binding Price}" 
+                    <ui:TextBlock Text="版 本 号：" Height="auto" Width="100" FontWeight="Bold" FontSize="18"  Foreground="{ui:ThemeResource TextFillColorPrimaryBrush}" />
+                    <ui:TextBlock x:Name="TB_Version_D" Text="{Binding VersionD}" 
                         Height="auto" Width="140" Foreground="{ui:ThemeResource TextFillColorPrimaryBrush}"
-                        FontSize="15"/>
+                        FontSize="18"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal"  VerticalAlignment="Center"  HorizontalAlignment="Center">
-                    <ui:TextBlock Text="机型：" Height="auto" Width="80" FontWeight="Bold" FontSize="15" Foreground="{ui:ThemeResource TextFillColorPrimaryBrush}" />
-                    <ui:TextBlock x:Name="TB_MachineType_D" Text="{Binding Price}" 
+                    <ui:TextBlock Text="机 型：" Height="auto" Width="100" FontWeight="Bold" FontSize="18" Foreground="{ui:ThemeResource TextFillColorPrimaryBrush}" />
+                    <ui:TextBlock x:Name="TB_MachineType_D" Text="{Binding MachineTypeD}" 
                         Height="auto" Width="140"  Foreground="{ui:ThemeResource TextFillColorPrimaryBrush}"
-                        FontSize="15" />
+                        FontSize="18" />
                 </StackPanel>
                 <StackPanel Orientation="Horizontal"  VerticalAlignment="Center"  HorizontalAlignment="Center">
-                    <ui:TextBlock Text="产品类型：" Height="auto" Width="80" FontWeight="Bold" FontSize="15"  Foreground="{ui:ThemeResource TextFillColorPrimaryBrush}"/>
-                    <ui:TextBlock x:Name="TB_ProductType_D" Text="{Binding Price}" 
+                    <ui:TextBlock Text="产 品 类 型：" Height="auto" Width="100" FontWeight="Bold" FontSize="18"  Foreground="{ui:ThemeResource TextFillColorPrimaryBrush}"/>
+                    <ui:TextBlock x:Name="TB_ProductType_D" Text="{Binding ProductTypeD}" 
                         Height="auto" Width="140"  Foreground="{ui:ThemeResource TextFillColorPrimaryBrush}"
-                        FontSize="15"/>
+                        FontSize="18"/>
                 </StackPanel>
             </StackPanel>
-            
-            
         </GroupBox>
     
-        <ui:Button x:Name="Btn_save" Content="保存" FontSize="25" 
+        <!--<ui:Button x:Name="Btn_save" Content="保存" FontSize="25" 
                    Grid.Row="2" Grid.Column="1" Height="60" Width="120"   
-                   VerticalAlignment="Center"  HorizontalAlignment="Center" FontWeight="Bold" Command="{Binding SaveCommand}" />
+                   VerticalAlignment="Center"  HorizontalAlignment="Center" FontWeight="Bold" Command="{Binding SaveCommand}" />-->
     </Grid>
 </UserControl>

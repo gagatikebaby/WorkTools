@@ -14,14 +14,14 @@
         WindowBackdropType="Mica"
         WindowCornerPreference="Round"
         WindowStartupLocation="CenterScreen"
-        Topmost="False"
+        Topmost="True"
         ExtendsContentIntoTitleBar="True"
         MouseLeftButtonDown="FluentWindow_MouseLeftButtonDown">
 
     <Grid>
         <ui:TitleBar
             x:Name="TitleBar"
-            Title="Panel"
+            Title="Development Tool"
             FontSize="18"
             Grid.Row="0"
             CloseWindowByDoubleClickOnIcon="True">
