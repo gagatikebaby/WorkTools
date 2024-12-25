@@ -14,7 +14,6 @@ namespace WorkToolsSln.View
         {
             ViewModel = viewModel;
             DataContext = ViewModel;
-
             InitializeComponent();
         }
     }

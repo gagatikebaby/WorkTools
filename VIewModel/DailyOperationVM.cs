@@ -66,7 +66,7 @@ namespace WorkToolsSln.VIewModel
                 {
                     new ButtonItem { Content = "启动软件", ClickCommand = new RelayCommand(() => StartExeExecute(Path.Combine(pathConfigInfo.UnpackagePath, "Vanguard.exe"))) },
                     new ButtonItem { Content = "打开Master", ClickCommand = new RelayCommand(() => OpenFileExecute(pathConfigInfo.MasterPath)) },
-                    new ButtonItem { Content = "Killer", ClickCommand = new RelayCommand(() => StartKillerExecute()) },
+                    new ButtonItem { Content = "KKKiller", ClickCommand = new RelayCommand(() => StartKillerExecute()) },
                     
                 },
                 new ObservableCollection<ButtonItem>
@@ -80,7 +80,12 @@ namespace WorkToolsSln.VIewModel
                     new ButtonItem { Content = "750 CFG1授权码", ClickCommand = new RelayCommand(() => CopyT750Cfg1EXecute()) },
                     new ButtonItem { Content = "宠物 750 CFG1授权码", ClickCommand = new RelayCommand(() => CopyPet750Cfg1EXecute()) },
                     new ButtonItem { Content = "工作站授权码", ClickCommand = new RelayCommand(() => CopyWorkStationExecute()) }, 
+                },
+                new ObservableCollection<ButtonItem>
+                {
+                    new ButtonItem { Content = "切换机型", ClickCommand = new RelayCommand(() => ChangeMachineTypeExecute()) },
                 }
+
             };
         }
 
@@ -138,9 +143,12 @@ namespace WorkToolsSln.VIewModel
             }
         }
 
-        
-
         #region Execute 方法
+
+        private void ChangeMachineTypeExecute()
+        {
+
+        }
 
         private void DeleteDocumentExecute()
         {
@@ -344,7 +352,6 @@ namespace WorkToolsSln.VIewModel
             }
         }
         #endregion
-
 
         private bool SvnRevert(string path)
         {
@@ -579,5 +586,29 @@ namespace WorkToolsSln.VIewModel
             }
         }
 
+        // 查找包含特定字符的文件夹并删除
+        public void DeleteFolderContainingString(string directoryPath, string searchString)
+        {
+            if (string.IsNullOrWhiteSpace(directoryPath) || string.IsNullOrWhiteSpace(searchString))
+            {
+                throw new ArgumentException("路径或搜索字符串不能为空。");
+            }
+
+            try
+            {
+                var directories = Directory.GetDirectories(directoryPath, "*", SearchOption.TopDirectoryOnly);
+                foreach (var dir in directories)
+                {
+                    if (dir.Contains(searchString))
+                    {
+                        Directory.Delete(dir, true);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("请检查文件是否被占用或不存在!");
+            }
+        }
     }
 }
