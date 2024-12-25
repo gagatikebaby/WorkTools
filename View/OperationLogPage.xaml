@@ -15,7 +15,7 @@
     <Grid ShowGridLines="False">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition Width="10*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
@@ -24,7 +24,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <ui:ListView Grid.Column="1" Grid.Row="1" Width="500" Height=" 500"  ItemsSource="{Binding ReportInfo.RecordInfoList}"
+        <ui:ListView Grid.Column="1" Grid.Row="1" Width="auto" Height=" auto"  ItemsSource="{Binding ReportInfo.RecordInfoList}"
                      SelectedItem="{Binding ReportInfo.SelectedRecordInfo, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" >
             <ui:ListView.ContextMenu>
                 <ContextMenu>
@@ -33,7 +33,7 @@
             </ui:ListView.ContextMenu>
             <ui:ListView.View>
                 <ui:GridView>
-                    <ui:GridViewColumn Header="序号" DisplayMemberBinding="{Binding Index}" Width="80"/>
+                    <ui:GridViewColumn Header="序号" DisplayMemberBinding="{Binding Index}" Width="60"/>
                     <ui:GridViewColumn Header="时间" Width="150">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
@@ -41,17 +41,17 @@
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </ui:GridViewColumn>
-                    <ui:GridViewColumn Header="操作" DisplayMemberBinding="{Binding Number}" Width="100"/>
+                    <ui:GridViewColumn Header="操作" DisplayMemberBinding="{Binding OperationType}" Width="600"/>
                 </ui:GridView>
             </ui:ListView.View>
         </ui:ListView>
 
-        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="1" Grid.Row="2" Visibility="Collapsed">
+        <!--<StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="1" Grid.Row="2" Visibility="Collapsed">
             <ui:TextBlock Text="合计支出：" FontSize="25"/>
             <ui:TextBlock Text="{Binding TotalExpenses}" MinWidth="100"  FontSize="25"/>
 
             <ui:TextBlock Text="合计收入："  FontSize="25"/>
             <ui:TextBlock Text="{Binding TotalIncome}" MinWidth="100"  FontSize="25"/>
-        </StackPanel>
+        </StackPanel>-->
     </Grid>
 </UserControl>

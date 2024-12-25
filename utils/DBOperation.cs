@@ -10,19 +10,19 @@ namespace WorkToolsSln.utils
     public class DBOperation
     {
         public static readonly DBOperation Instance = new DBOperation();
+
         /// <summary>
-        /// 数据库插入
+        /// 记录操作日志
         /// </summary>
-        /// <param name="number"></param>
-        /// <param name="price"></param>
+        /// <param name="OperationType"></param>
+        /// 操作类型
         /// <returns></returns>
-        public bool AddRecord(int number, double price)
+        public bool AddRecord(string OperationType)
         {
             DBModel record = new DBModel
             {
                 DbInstanceUID = Guid.NewGuid().ToString(),
-                Number = Convert.ToInt32(number),
-                Price = Convert.ToInt32(price),
+                OperationType = OperationType,
                 Time = DateTime.Now
             };
 

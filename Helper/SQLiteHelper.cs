@@ -33,8 +33,7 @@ namespace WorkToolsSln.Helper
                     string createTableQuery = @"
             CREATE TABLE IF NOT EXISTS DBModels (
                 DbInstanceUID TEXT NOT NULL,
-                Number TEXT NOT NULL,
-                Price TEXT NOT NULL,
+                OperationType TEXT NOT NULL,
                 Time TEXT NOT NULL
             );";
 

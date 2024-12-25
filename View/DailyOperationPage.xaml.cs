@@ -9,12 +9,6 @@ namespace WorkToolsSln.View
     public partial class DailyOperationPage : INavigableView<DailyOperationVM>
     {
         public DailyOperationVM ViewModel { get;  }
-        //public DailyOperationPage()
-        //{
-        //    ViewModel = new DailyOperationVM(navigationService: null);
-        //    InitializeComponent();
-        //    this.DataContext = ViewModel;
-        //}
 
         public DailyOperationPage(DailyOperationVM viewModel)
         {

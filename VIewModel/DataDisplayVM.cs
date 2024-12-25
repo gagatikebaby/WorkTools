@@ -105,15 +105,15 @@ namespace WorkToolsSln.VIewModel
 
         private void InitCommands()
         {
-            SaveCommand = new RelayCommand(SaveCommandExecute);
+            //SaveCommand = new RelayCommand(SaveCommandExecute);
         }
 
         public ICommand SaveCommand { get; protected set; }
 
-        private void SaveCommandExecute()
-        {
-            DBOperation.Instance.AddRecord(Number, Price);
-        }
+        //private void SaveCommandExecute()
+        //{
+        //    DBOperation.Instance.AddRecord(Number, Price);
+        //}
 
         private int number;
         public int Number

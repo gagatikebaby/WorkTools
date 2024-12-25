@@ -7,8 +7,7 @@ namespace WorkToolsSln.Model
     public class DBModel : ObservableObject
     {
         private string dbInstanceUID;
-        private double number;
-        private double price;
+        private string operationType;
         private DateTime time;
         private int index;
         /// <summary>
@@ -23,27 +22,17 @@ namespace WorkToolsSln.Model
         }
 
         /// <summary>
-        /// 数量
+        /// 操作类型
         /// </summary>
         [MaxLength(255)]
-        public double Number
+        public string OperationType
         {
-            get => number;
-            set => SetProperty(ref number, value); // 使用 SetProperty 方法来更新属性并触发通知
+            get => operationType;
+            set => SetProperty(ref operationType, value);
         }
 
         /// <summary>
-        /// 价格
-        /// </summary>
-        [MaxLength(255)]
-        public double Price
-        {
-            get => price;
-            set => SetProperty(ref price, value);
-        }
-
-        /// <summary>
-        /// 价格
+        /// 时间
         /// </summary>
         [MaxLength(255)]
         public DateTime Time

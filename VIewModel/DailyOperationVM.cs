@@ -9,6 +9,7 @@ using WorkToolsSln.Model;
 using Wpf.Ui;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using WorkToolsSln.utils;
 
 namespace WorkToolsSln.VIewModel
 {
@@ -149,6 +150,7 @@ namespace WorkToolsSln.VIewModel
                 InitMessageBox();
                 _messagebox.Content = "删除Unpackage 成功！";
                 _messagebox.ShowDialogAsync();
+                DBOperation.Instance.AddRecord($"删除Unpackage，路径:{pathConfigInfo.UnpackagePath}");
             }
         }
 
@@ -159,6 +161,7 @@ namespace WorkToolsSln.VIewModel
                 InitMessageBox();
                 _messagebox.Content = "检出Unpackage 成功！";
                 _messagebox.ShowDialogAsync();
+                DBOperation.Instance.AddRecord($"检出Unpackage，地址:{pathConfigInfo.SvnURL}");
             }
         }
 
@@ -174,6 +177,7 @@ namespace WorkToolsSln.VIewModel
                 _messagebox.Content = "合成包 成功！";
                 _messagebox.ShowDialogAsync();
             }
+            DBOperation.Instance.AddRecord($"合成软件包,{pathConfigInfo.DependencyPath}和{pathConfigInfo.UnpackagePath}");
         }
 
         /// <summary>
@@ -188,6 +192,7 @@ namespace WorkToolsSln.VIewModel
                     InitMessageBox();
                     _messagebox.Content = "更新Dependency 成功！";
                     _messagebox.ShowDialogAsync();
+                    DBOperation.Instance.AddRecord($"更新Dependency,路径:{pathConfigInfo.DependencyPath}");
                 }
             }
         }
@@ -204,6 +209,7 @@ namespace WorkToolsSln.VIewModel
                     InitMessageBox();
                     _messagebox.Content = "更新Unpackage 成功！";
                     _messagebox.ShowDialogAsync();
+                    DBOperation.Instance.AddRecord($"更新Unpackage,路径:{pathConfigInfo.UnpackagePath}");
                 }
             }
 
@@ -219,6 +225,7 @@ namespace WorkToolsSln.VIewModel
                 InitMessageBox();
                 _messagebox.Content = "清理Unpackage 成功！";
                 _messagebox.ShowDialogAsync();
+                DBOperation.Instance.AddRecord($"清理Unpackage,路径:{pathConfigInfo.UnpackagePath}");
             }
         }
 
@@ -305,6 +312,7 @@ namespace WorkToolsSln.VIewModel
                     Process.Start(exePath);
                     Console.WriteLine("程序已启动！");
                 }
+                DBOperation.Instance.AddRecord($"启动KKKiler, 路径：{exePath}");
             }
             catch (Exception ex)
             {
@@ -327,6 +335,8 @@ namespace WorkToolsSln.VIewModel
 
                 // 启动程序
                 Process.Start(startInfo);
+                //DBManger.Instance.AddRecord();
+                DBOperation.Instance.AddRecord($"启动软件，路径：{path}");
             }
             catch (Exception ex)
             {

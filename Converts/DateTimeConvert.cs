@@ -11,7 +11,7 @@ namespace WorkToolsSln.Converts
         {
             if (value is DateTime dateTime)
             {
-                return dateTime.ToString("yyyy-MM-dd HH:mm");
+                return dateTime.ToString("yyyy-MM-dd HH:mm:ss");
             }
             return value;
         }

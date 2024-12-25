@@ -22,8 +22,6 @@ namespace WorkToolsSln.VIewModel
         public void RefreshList()
         {
             ReportInfo.InitData();
-            TotalExpenses = ReportInfo.RecordInfoList.Where(a => a.Number >= 0).Sum(a => a.Number);
-            TotalIncome = ReportInfo.RecordInfoList.Where(a => a.Price >= 0).Sum(a => a.Price);
         }
 
         private void InitCommands()
