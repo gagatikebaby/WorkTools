@@ -48,6 +48,8 @@ namespace WorkToolsSln.VIewModel
             InitCommand();
         }
 
+        
+
         public override void OnNavigatedTo()
         {
             LoadJsonData();
@@ -73,17 +75,19 @@ namespace WorkToolsSln.VIewModel
                 {
                     new ButtonItem { Content = "打开Visual Studio", ClickCommand = new RelayCommand(() => StartExeExecute(pathConfigInfo.VisualStudioPath)) },
                     new ButtonItem { Content = "删除Unpackage", ClickCommand = new RelayCommand(() => DeleteDocumentExecute()) },
-                    new ButtonItem { Content = "580 CFG1授权码", ClickCommand = new RelayCommand(() => CopyQ580Cfg1EXecute()) },
+                     new ButtonItem { Content = "切换机型", ClickCommand = new RelayCommand(() => ChangeMachineTypeExecute()) },
+                    
                 },
                 new ObservableCollection<ButtonItem>
                 {
+                    new ButtonItem { Content = "580 CFG1授权码", ClickCommand = new RelayCommand(() => CopyQ580Cfg1EXecute()) },
                     new ButtonItem { Content = "750 CFG1授权码", ClickCommand = new RelayCommand(() => CopyT750Cfg1EXecute()) },
                     new ButtonItem { Content = "宠物 750 CFG1授权码", ClickCommand = new RelayCommand(() => CopyPet750Cfg1EXecute()) },
-                    new ButtonItem { Content = "工作站授权码", ClickCommand = new RelayCommand(() => CopyWorkStationExecute()) }, 
+                    
                 },
                 new ObservableCollection<ButtonItem>
                 {
-                    new ButtonItem { Content = "切换机型", ClickCommand = new RelayCommand(() => ChangeMachineTypeExecute()) },
+                   new ButtonItem { Content = "工作站授权码", ClickCommand = new RelayCommand(() => CopyWorkStationExecute()) },
                 }
 
             };
@@ -147,7 +151,27 @@ namespace WorkToolsSln.VIewModel
 
         private void ChangeMachineTypeExecute()
         {
+            var result = System.Windows.MessageBox.Show($"确定切换机型吗？", "确认", System.Windows.MessageBoxButton.YesNo, MessageBoxImage.Warning);
+            if (result != System.Windows.MessageBoxResult.Yes)
+            {
+                return ;
+            }
 
+            InitMessageBox();
+            if (!DeleteFolderContainingString(pathConfigInfo.UnpackagePath, "Configuration_"))
+            {
+                return;
+            }
+
+            RemoveReadOnlyAndDelete(Path.Combine(pathConfigInfo.UnpackagePath, "Configuration"),false);
+
+            if(!SvnUpdata(Path.Combine(pathConfigInfo.UnpackagePath, "Configuration")))
+            {
+                return;
+            }
+
+            _messagebox.Content = "更换机型成功，请启动软件！";
+            _messagebox.ShowDialogAsync();
         }
 
         private void DeleteDocumentExecute()
@@ -492,7 +516,7 @@ namespace WorkToolsSln.VIewModel
                     string fileName = Path.GetFileName(file);
 
                     // 构建目标路径
-                    string destFile = Path.Combine(dest, fileName);
+                    string destFile = System.IO.Path.Combine(dest, fileName);
 
                     // 复制文件到目标文件夹
                     File.Copy(file, destFile, true);
@@ -557,7 +581,7 @@ namespace WorkToolsSln.VIewModel
             return true;
         }
 
-        private void RemoveReadOnlyAndDelete(string path)
+        private void RemoveReadOnlyAndDelete(string path,bool isDeleteDirectory = true)
         {
             if (File.Exists(path))
             {
@@ -577,8 +601,11 @@ namespace WorkToolsSln.VIewModel
                     RemoveReadOnlyAndDelete(dir);
                 }
 
-                // 删除空目录
-                Directory.Delete(path,true);
+                if(isDeleteDirectory)
+                {
+                    // 删除空目录
+                    Directory.Delete(path, true);
+                }
             }
             else
             {
@@ -587,11 +614,12 @@ namespace WorkToolsSln.VIewModel
         }
 
         // 查找包含特定字符的文件夹并删除
-        public void DeleteFolderContainingString(string directoryPath, string searchString)
+        public bool DeleteFolderContainingString(string directoryPath, string searchString)
         {
             if (string.IsNullOrWhiteSpace(directoryPath) || string.IsNullOrWhiteSpace(searchString))
             {
-                throw new ArgumentException("路径或搜索字符串不能为空。");
+                MessageBox.Show("路径或搜索字符串不能为空!");
+                return false;
             }
 
             try
@@ -607,8 +635,40 @@ namespace WorkToolsSln.VIewModel
             }
             catch (Exception ex)
             {
-                MessageBox.Show("请检查文件是否被占用或不存在!");
+                MessageBox.Show($"请检查文件{directoryPath}是否被占用或不存在!");
+                return false;
             }
+            return true;
         }
+
+        ///// <summary>
+        ///// 删除指定文件夹内的文件
+        ///// </summary>
+        ///// <param name="Directorypath"></param>
+        //private bool DeleteDirectoryContentFile(string Directorypath)
+        //{
+        //    try
+        //    {
+        //        if (Directory.Exists(Directorypath))
+        //        {
+        //            foreach (var dir in Directory.GetDirectories(Directorypath))
+        //            {
+        //                if (File.Exists(dir))
+        //                {
+        //                    // 取消文件的隐藏和只读属性
+        //                    File.SetAttributes(dir, FileAttributes.Normal);
+        //                    File.Delete(dir); // 删除文件
+        //                }
+        //            }
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show($"删除文件夹内文件失败：{ex.Message}");
+        //        return false;
+        //    }
+
+        //    return true;
+        //}
     }
 }

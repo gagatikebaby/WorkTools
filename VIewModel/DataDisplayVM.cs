@@ -10,7 +10,7 @@ using Wpf.Ui;
 
 namespace WorkToolsSln.VIewModel
 {
-    public partial class DataDisplayVM : ObservableObject
+    public partial class DataDisplayVM : ViewModel
     {
         private readonly INavigationService _navigationService;
         private AboutConfig _aboutConfig { get; set; }
@@ -27,6 +27,12 @@ namespace WorkToolsSln.VIewModel
             ReadConfig();
             ReadConfigD();
             InitCommands();
+        }
+
+        public override void OnNavigatedTo()
+        {
+            ReadConfig();
+            ReadConfigD();
         }
 
         private void ReadConfig()
