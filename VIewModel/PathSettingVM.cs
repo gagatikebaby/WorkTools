@@ -23,6 +23,21 @@ namespace WorkToolsSln.VIewModel
         [ObservableProperty]
         private string _visualStdioPath = string.Empty;
 
+        [ObservableProperty]
+        private string _machine580 = string.Empty;
+
+        [ObservableProperty]
+        private string _machine750 = string.Empty;
+
+        [ObservableProperty]
+        private string _machine750P = string.Empty;
+
+        [ObservableProperty]
+        private string _machineWorkstationCode = string.Empty;
+
+        [ObservableProperty]
+        private string _machineWorkstationPassword = string.Empty;
+
         private readonly string ConfigPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Configuration", "PathConfig.json");
         private PathConfigInfo _PathList = new PathConfigInfo();
         public SubWindowsVM()
@@ -31,6 +46,22 @@ namespace WorkToolsSln.VIewModel
             DependencyPath = _PathList.DependencyPath;
             UnpackagePath = _PathList.UnpackagePath;
             VisualStdioPath = _PathList.VisualStudioPath;
+            _machine580 = _PathList.Q580Cfg1;
+            _machine750 = _PathList.T750Cfg1;
+            _machine750P = _PathList.Pet750Cfg1;
+            _machineWorkstationCode = _PathList.workStation.Code;
+            _machineWorkstationPassword = _PathList.workStation.PassWord;
+        }
+
+
+        public void SaveConfig()
+        {
+            _PathList.Q580Cfg1 = Machine580;
+            _PathList.T750Cfg1 = Machine750;
+            _PathList.Pet750Cfg1 = Machine750P;
+            _PathList.workStation.Code = MachineWorkstationCode;
+            _PathList.workStation.PassWord = MachineWorkstationPassword;
+            FileOperation.WriteConfig<PathConfigInfo>(ConfigPath, _PathList);
         }
 
         [RelayCommand]

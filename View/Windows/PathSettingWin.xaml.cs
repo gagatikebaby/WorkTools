@@ -14,8 +14,12 @@ namespace WorkToolsSln.View.Windows
         {
             InitializeComponent();
             _viewModel = new SubWindowsVM();
-
             this.DataContext = _viewModel;
+        }
+
+        private void FluentWindow_Closed(object sender, EventArgs e)
+        {
+            _viewModel.SaveConfig();
         }
     }
 }

@@ -104,6 +104,8 @@ namespace WorkToolsSln.VIewModel
                 Height = 200, // 设置高度
                 MinWidth = 400, // 强制最小宽度
                 MinHeight = 200, // 强制最小高度
+                //HorizontalAlignment = HorizontalAlignment.Center,
+                //VerticalAlignment = VerticalAlignment.Center,
                 WindowStartupLocation = WindowStartupLocation.CenterOwner // 在父窗口的中心
             };
             // 设置 Owner 确保在应用程序窗口居中

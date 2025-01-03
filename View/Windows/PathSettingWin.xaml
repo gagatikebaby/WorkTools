@@ -6,99 +6,137 @@
       xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
       xmlns:local="clr-namespace:WorkToolsSln.View.Windows"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="1200" d:DesignWidth="1800"
       Title="路径及授权码配置"
       Topmost="True"
-      >
-
-    <StackPanel>
-        <ui:TitleBar
+      Closed="FluentWindow_Closed">
+    <Grid ShowGridLines="False">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        
+        <StackPanel Grid.Row="0">
+            <ui:TitleBar
         x:Name="TitleBar"
-        Title="WPF UI Gallery - Sandbox"
+        Title="Path setting"
         Margin="0"
         CloseWindowByDoubleClickOnIcon="True">
-            <!--<ui:TitleBar.Icon>
+                <!--<ui:TitleBar.Icon>
                 <ui:ImageIcon Source="pack://application:,,,/Assets/wpfui.png" />
             </ui:TitleBar.Icon>-->
-        </ui:TitleBar>
+            </ui:TitleBar>
 
-        <Border Height="28"/>
-        <ui:CardControl Margin="0,0,0,12" Icon="{ui:SymbolIcon Symbol=CalendarEdit16}">
-            <ui:CardControl.Header>
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                    </Grid.RowDefinitions>
-                    <ui:TextBlock
+            <Border Height="28"/>
+            <ui:CardControl Margin="0,0,0,12" Icon="{ui:SymbolIcon Symbol=CalendarEdit16}">
+                <ui:CardControl.Header>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <ui:TextBlock
                 Grid.Row="0"
                 FontTypography="Body"
                 Text="{Binding DependencyPath}" />
-                    <ui:TextBlock
+                        <ui:TextBlock
     Grid.Row="1"
     Foreground="{ui:ThemeResource TextFillColorSecondaryBrush}"
     Text="Dependency路径"  FontSize="12" />
-                </Grid>
-            </ui:CardControl.Header>
-            <ui:Button Content="选择路径" FontSize="20"
+                    </Grid>
+                </ui:CardControl.Header>
+                <ui:Button Content="选择路径" FontSize="20"
                 Grid.Column="1"
                 MinWidth="200"
                 MinHeight="40"
                 Command="{Binding SelectDependcyPathCommand}">
-            </ui:Button>
-        </ui:CardControl>
+                </ui:Button>
+            </ui:CardControl>
 
-        <Border Height="0"/>
-        <ui:CardControl Margin="0,0,0,12" Icon="{ui:SymbolIcon Symbol=CalendarEdit16}">
-            <ui:CardControl.Header>
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                    </Grid.RowDefinitions>
-                    <ui:TextBlock
+            <Border Height="0"/>
+            <ui:CardControl Margin="0,0,0,12" Icon="{ui:SymbolIcon Symbol=CalendarEdit16}">
+                <ui:CardControl.Header>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <ui:TextBlock
         Grid.Row="0"
         FontTypography="Body"
         Text="{Binding UnpackagePath}" />
-                    <ui:TextBlock
+                        <ui:TextBlock
 Grid.Row="1"
 Foreground="{ui:ThemeResource TextFillColorSecondaryBrush}"
 Text="Unpackage路径"  FontSize="12" />
-                </Grid>
-            </ui:CardControl.Header>
-            <ui:Button Content="选择路径" FontSize="20"
+                    </Grid>
+                </ui:CardControl.Header>
+                <ui:Button Content="选择路径" FontSize="20"
         Grid.Column="1"
         MinWidth="200"
         MinHeight="40"
         Command="{Binding SelectUnpackagePathCommand}">
-            </ui:Button>
-        </ui:CardControl>
+                </ui:Button>
+            </ui:CardControl>
 
-        <Border Height="0"/>
-        <ui:CardControl Margin="0,0,0,12" Icon="{ui:SymbolIcon Symbol=CalendarEdit16}">
-            <ui:CardControl.Header>
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                    </Grid.RowDefinitions>
-                    <ui:TextBlock
+            <Border Height="0"/>
+            <ui:CardControl Margin="0,0,0,12" Icon="{ui:SymbolIcon Symbol=CalendarEdit16}">
+                <ui:CardControl.Header>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <ui:TextBlock
         Grid.Row="0"
         FontTypography="Body"
         Text="{Binding VisualStdioPath}" />
-                    <ui:TextBlock
+                        <ui:TextBlock
 Grid.Row="1"
 Foreground="{ui:ThemeResource TextFillColorSecondaryBrush}"
 Text="Visual Stdio路径"  FontSize="12" />
-                </Grid>
-            </ui:CardControl.Header>
+                    </Grid>
+                </ui:CardControl.Header>
 
-            <ui:Button Content="选择路径" FontSize="20"
+                <ui:Button Content="选择路径" FontSize="20"
         Grid.Column="1"
         MinWidth="200"
         MinHeight="40"
         Command="{Binding VisualStudioPathCommand}">
-            </ui:Button>
-        </ui:CardControl>
-    </StackPanel>
+                </ui:Button>
+            </ui:CardControl>
+        </StackPanel>
+
+
+
+        <StackPanel Grid.Row="1" HorizontalAlignment="Center" Orientation="Vertical">
+            <Border Height="50"/>
+            <StackPanel Orientation="Horizontal">
+                <ui:TextBlock Text="580 CFG1:"  Width="auto" FontSize="20" VerticalAlignment="Center" />
+                <ui:TextBox Text="{Binding Machine580}" Width="auto" Height="50" FontSize="20"/>
+            </StackPanel>
+
+            <Border Height="10"/>
+            <StackPanel Orientation="Horizontal">
+                <ui:TextBlock Text="750 CFG1:"  Width="auto" FontSize="20" VerticalAlignment="Center"/>
+                <ui:TextBox Text="{Binding Machine750}" Width="auto" Height="50" FontSize="20"/>
+            </StackPanel>
+
+            <Border Height="10"/>
+            <StackPanel Orientation="Horizontal">
+                <ui:TextBlock Text="Pet 750 CFG1:"  Width="auto" FontSize="20" VerticalAlignment="Center" />
+                <ui:TextBox Text="{Binding Machine750P}" Width="auto" Height="50" FontSize="20"/>
+            </StackPanel>
+
+            <Border Height="10"/>
+            <StackPanel Orientation="Horizontal">
+                <ui:TextBlock Text="Workstation:"  Width="auto" FontSize="20" VerticalAlignment="Center"/>
+                <ui:TextBox Text="{Binding MachineWorkstationCode}" Width="auto" Height="50" FontSize="20"/>
+                <Border Width="10"/>
+                <ui:TextBox Text="{Binding MachineWorkstationPassword}" Width="auto" Height="50" FontSize="20"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+    
+
 </ui:FluentWindow>
