@@ -88,9 +88,30 @@ namespace WorkToolsSln.VIewModel
                 new ObservableCollection<ButtonItem>
                 {
                    new ButtonItem { Content = "工作站授权码", ClickCommand = new RelayCommand(() => CopyWorkStationExecute()) },
+                   new ButtonItem { Content = "自动登录", ClickCommand = new RelayCommand(() => SetAutoLogin()) },
                 }
 
             };
+        }
+
+        private void SetAutoLogin()
+        {
+            string autoloninPath = pathConfigInfo.UnpackagePath + @"\Configuration\AutoLogin.txt";
+            if (!File.Exists(autoloninPath))
+            {
+                MessageBox.Show("AutoLogin.txt文件不存在，请检查！");
+                return;
+            }
+
+            InitMessageBox();
+            string fileContent = File.ReadAllText(autoloninPath);
+            if (fileContent.Contains("0"))
+            {
+                
+                fileContent = fileContent.Replace("0","1");
+                File.WriteAllText(autoloninPath, fileContent);
+                _messagebox.ShowDialogAsync();
+            }
         }
 
         private void InitMessageBox()
@@ -190,7 +211,14 @@ namespace WorkToolsSln.VIewModel
 
         private void UnpackageCheckoutExecute()
         {
-            if(SvnCheckOutFunc(pathConfigInfo.UnpackagePath, pathConfigInfo.SvnURL))
+            // 确认操作
+            var result = System.Windows.MessageBox.Show($"确定Checkout？", "确认", System.Windows.MessageBoxButton.YesNo, MessageBoxImage.Warning);
+            if (result != System.Windows.MessageBoxResult.Yes)
+            {
+                return;
+            }
+
+            if (SvnCheckOutFunc(pathConfigInfo.UnpackagePath, pathConfigInfo.SvnURL))
             {
                 InitMessageBox();
                 _messagebox.Content = "检出Unpackage 成功！";
@@ -236,7 +264,14 @@ namespace WorkToolsSln.VIewModel
         /// </summary>
         private void UnpackageUpataExecute()
         {
-            if(SvnRevert(pathConfigInfo.UnpackagePath))
+            // 确认操作
+            var result = System.Windows.MessageBox.Show($"确定更新？", "确认", System.Windows.MessageBoxButton.YesNo, MessageBoxImage.Warning);
+            if (result != System.Windows.MessageBoxResult.Yes)
+            {
+                return;
+            }
+
+            if (SvnRevert(pathConfigInfo.UnpackagePath))
             {
                 if (SvnUpdata(pathConfigInfo.UnpackagePath))
                 {

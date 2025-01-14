@@ -139,7 +139,7 @@
             </ui:Button>
         </ui:CardControl>
 
-        <DataGrid AutoGenerateColumns="False" HeadersVisibility="None"
+        <DataGrid AutoGenerateColumns="False" HeadersVisibility="None" 
           CanUserAddRows="False" ItemsSource="{Binding ButtonList}"
           RowHeight="110" ColumnWidth="*"
           Width="Auto" Height="Auto">
@@ -149,7 +149,7 @@
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <ui:Button Content="{Binding [0].Content}" 
-                            Command="{Binding [0].ClickCommand}" 
+                            Command="{Binding [0].ClickCommand}"  
                             Width="170" Height="80" HorizontalAlignment="Center"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
