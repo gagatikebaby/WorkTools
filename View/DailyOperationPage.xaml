@@ -35,6 +35,32 @@
             </ui:Button>
         </ui:CardControl>
 
+        <!--<Border Height="0"/>
+        <ui:CardControl Margin="0,0,0,12" Icon="{ui:SymbolIcon Symbol=ArrowDown16}">
+            <ui:CardControl.Header>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <ui:TextBlock
+        Grid.Row="0"
+        FontTypography="Body"
+        Text="还原Dependency" />
+                    <ui:TextBlock
+        Grid.Row="1"
+        Foreground="{ui:ThemeResource TextFillColorSecondaryBrush}"
+        Text="包含Revert操作" />
+                </Grid>
+            </ui:CardControl.Header>
+            <ui:Button Content="执行" FontSize="20"
+            Grid.Column="1"
+            MinWidth="200"
+            MinHeight="40"
+            Command="{Binding DependencyRevertCmd}">
+            </ui:Button>
+        </ui:CardControl>-->
+
         <Border Height="0"/>
         <ui:CardControl Margin="0,0,0,12" Icon="{ui:SymbolIcon Symbol=ArrowDown16}">
             <ui:CardControl.Header>

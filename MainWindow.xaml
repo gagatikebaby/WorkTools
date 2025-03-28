@@ -33,7 +33,8 @@
 
         <ui:NavigationView x:Name="NavigationView" Background="Black" 
                            IsBackButtonVisible="Auto" 
-                           HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                           HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                           >
             <ui:NavigationView.MenuItems>
 
                 <ui:NavigationViewItem

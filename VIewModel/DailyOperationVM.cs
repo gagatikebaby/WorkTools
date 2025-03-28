@@ -10,6 +10,7 @@ using Wpf.Ui;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using WorkToolsSln.utils;
+using Microsoft.Extensions.DependencyModel;
 
 namespace WorkToolsSln.VIewModel
 {
@@ -32,12 +33,13 @@ namespace WorkToolsSln.VIewModel
         Wpf.Ui.Controls.MessageBox _messagebox { get; set; }
 
         #region Command
-        public ICommand DependencyUpataCmd { get; protected set; }
-        public ICommand UnpackageUpataCmd { get; protected set; }
-        public ICommand UnpackageCleanUpCmd { get; protected set; }
-        public ICommand Denpenency2UnpackageCmd { get; protected set; }
-        public ICommand UnpackageCheckoutCmd { get; protected set; }
-        public ICommand DeleteDocumentCmd { get; protected set; }
+        public ICommand DependencyUpataCmd { get; private set; }
+        public ICommand UnpackageUpataCmd { get; private set; }
+        public ICommand UnpackageCleanUpCmd { get; private set; }
+        public ICommand Denpenency2UnpackageCmd { get; private set; }
+        public ICommand UnpackageCheckoutCmd { get; private set; }
+        public ICommand DeleteDocumentCmd { get; private set; }
+        public ICommand DependencyRevertCmd { get; private set; }
         #endregion
 
         public DailyOperationVM(INavigationService navigationService)
@@ -143,8 +145,19 @@ namespace WorkToolsSln.VIewModel
             UnpackageCleanUpCmd = new RelayCommand(UnpackageCleanUpExecute);
             UnpackageCheckoutCmd = new RelayCommand(UnpackageCheckoutExecute);
             Denpenency2UnpackageCmd = new RelayCommand(Denpenency2UnpackageExecute);
+            DependencyRevertCmd = new RelayCommand(DependencyRevertExecute);
         }
 
+        private void DependencyRevertExecute()
+        {
+            if (SvnRevert(pathConfigInfo.DependencyPath))
+            {
+                InitMessageBox();
+                _messagebox.Content = "Revert Dependency 成功！";
+                _messagebox.ShowDialogAsync();
+                DBOperation.Instance.AddRecord($"Revert Dependency，路径:{pathConfigInfo.DependencyPath}");
+            }
+        }
 
         private void OpenFileExecute(string path)
         {
@@ -430,9 +443,12 @@ namespace WorkToolsSln.VIewModel
             {
                 using (SvnClient client = new SvnClient())
                 {
+                    SvnRevertArgs revertArgs = new SvnRevertArgs
+                    {
+                        Depth = SvnDepth.Infinity  // 递归到所有子目录和文件
+                    };
 
-                    client.Revert(path, new SvnRevertArgs());
-
+                    client.Revert(path, revertArgs);
                 }
             }
             catch (Exception ex)
