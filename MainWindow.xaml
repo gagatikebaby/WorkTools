@@ -69,7 +69,7 @@ TargetPageType="{x:Type Views:OperationLogPage}">
             <ui:NavigationView.FooterMenuItems>
                 <ui:NavigationViewItem
 Content="设置"
-NavigationCacheMode="Enabled"
+NavigationCacheMode="Disabled"
 TargetPageType="{x:Type Views:SettingPage}">
                     <ui:NavigationViewItem.Icon>
                         <ui:SymbolIcon Symbol="Settings16" />

@@ -14,74 +14,148 @@
     <Page.Resources>
         <cvt:ThemeConvert x:Key="themeConvert"/>
     </Page.Resources>
-    <StackPanel>
-        <ui:TextBlock
-            Margin="0,0,0,8"
-            FontTypography="BodyStrong"
-            Text="Setting" />
-        <ui:CardControl Margin="0,0,0,12" Icon="{ui:SymbolIcon Color24}">
-            <ui:CardControl.Header>
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                    </Grid.RowDefinitions>
-                    <ui:TextBlock
-                 Grid.Row="0"
-                 FontTypography="Body"
-                 Text="App theme" />
-                    <ui:TextBlock
-                 Grid.Row="1"
-                 Foreground="{ui:ThemeResource TextFillColorSecondaryBrush}"
-                 Text="Select which app theme to display" />
-                </Grid>
-            </ui:CardControl.Header>
-            <ComboBox
-         Grid.Column="1"
-         MinWidth="200"
-         x:Name="Cmb_ThemeChange"
-         SelectedIndex="{Binding ViewModel.CurrentApplicationTheme, Converter={StaticResource themeConvert}, Mode=TwoWay}">
-                <ComboBoxItem Content="Light" />
-                <ComboBoxItem Content="Dark" />
-                <ComboBoxItem Content="High Contrast" />
-            </ComboBox>
-        </ui:CardControl>
 
-        <ItemsControl ItemsSource="{Binding ViewModel.WindowCards, Mode=OneWay}">
-            <ItemsControl.ItemTemplate>
-                <DataTemplate >
-                    <ui:CardAction
-                        Margin="4"
-                        HorizontalAlignment="Stretch"
-                        VerticalAlignment="Stretch"
-                        Command="{Binding ViewModel.OpenWindowCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:SettingPage}, Mode=OneWay}"
-                        CommandParameter="{Binding Value, Mode=OneTime}"
-                        Icon="{Binding Icon, Mode=OneTime}"
-                        IsChevronVisible="True">
-                        <StackPanel>
-                            <ui:TextBlock
-                                Margin="0"
-                                FontTypography="BodyStrong"
-                                Text="{Binding Name, Mode=OneTime}"
-                                TextWrapping="WrapWithOverflow" />
-                            <ui:TextBlock
-                                Appearance="Tertiary"
-                                Text="{Binding Description, Mode=OneTime}"
-                                TextWrapping="WrapWithOverflow" />
-                        </StackPanel>
-                    </ui:CardAction>
-                </DataTemplate>
-            </ItemsControl.ItemTemplate>
-            <ItemsControl.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <ui:VirtualizingWrapPanel
-                        IsItemsHost="True"
-                        ItemSize="290,80"
-                        Orientation="Vertical"
-                        SpacingMode="Uniform"
-                        StretchItems="True" />
-                </ItemsPanelTemplate>
-            </ItemsControl.ItemsPanel>
-        </ItemsControl>
-    </StackPanel>
+
+    <Grid >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="500"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Height="500" ClipToBounds="True">
+            <Rectangle VerticalAlignment="Bottom" Height="500" RadiusX="8" RadiusY="8" Panel.ZIndex="0">
+                <Rectangle.Fill>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                        <GradientStop Color="#171C26" Offset="0"/>
+                        <GradientStop Color="#00000000" Offset="1"/>
+                    </LinearGradientBrush>
+                </Rectangle.Fill>
+            </Rectangle>
+        </Grid>
+        <Grid Margin="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0" Panel.ZIndex="1">
+                <ui:SymbolIcon x:Name="MainSymbolIcon" FontSize="100"/>
+                <TextBlock 
+                x:Name="MainTitle"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"                        
+                FontSize="28"          
+                FontWeight="Black"/>
+            </StackPanel>
+
+            <TextBlock  
+            Grid.Column="1"
+            HorizontalAlignment="Center"
+            Margin="5"
+            Foreground="{DynamicResource TextControlPlaceholderForeground}" 
+            FontSize="16" 
+            Panel.ZIndex="-1"
+            FontWeight="ExtraBlack"
+            TextWrapping="Wrap">
+            Do not go gentle into that good night,<LineBreak />
+            Old age should burn and rave at close of day; <LineBreak />
+            Rage, rage against the dying of the light.<LineBreak />
+            <LineBreak />
+            Though wise men at their end know dark is right,<LineBreak />
+            Because their words had forked no lightning they<LineBreak />
+            Do not go gentle into that good night.
+                <LineBreak />
+             Good men, the last wave by, crying how bright   <LineBreak />
+                Their frail deeds miaht have danced in agreen bay,<LineBreak />
+                Rage,rage against the dying of the light.<LineBreak />
+                <LineBreak />
+                Wild men who caught and sang the sun in flight,<LineBreak />
+                And learn, too late, they grieved it on its way,<LineBreak />
+                Do not go gentle into that good night.<LineBreak />
+                <LineBreak />
+                Grave men, near death, who see with blinding sight<LineBreak />
+                Blind eyes could blaze like meteors and be gay,<LineBreak />
+                Rage, rage against the dying of the light.<LineBreak />
+                <LineBreak />
+                And you ,my father, there on the sad heigh,<LineBreak />
+                Curse, bless, me now with your fierce tears, I pray.<LineBreak />
+                Do not go gentle into the good night.<LineBreak />
+                Rage, rage against the dying of the light.<LineBreak />
+            </TextBlock>
+        </Grid>
+
+        <Canvas x:Name="MainCanvas" Panel.ZIndex="2"/>
+        
+        <StackPanel Grid.Row="1"> 
+            <ui:TextBlock
+        Margin="0,0,0,8"
+        FontTypography="BodyStrong"
+        Text="Setting" />
+            <ui:CardControl Margin="0,0,0,12" Icon="{ui:SymbolIcon Color24}">
+                <ui:CardControl.Header>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <ui:TextBlock
+             Grid.Row="0"
+             FontTypography="Body"
+             Text="App theme" />
+                        <ui:TextBlock
+             Grid.Row="1"
+             Foreground="{ui:ThemeResource TextFillColorSecondaryBrush}"
+             Text="Select which app theme to display" />
+                    </Grid>
+                </ui:CardControl.Header>
+                <ComboBox
+     Grid.Column="1"
+     MinWidth="200"
+     x:Name="Cmb_ThemeChange"
+     SelectedIndex="{Binding ViewModel.CurrentApplicationTheme, Converter={StaticResource themeConvert}, Mode=TwoWay}">
+                    <ComboBoxItem Content="Light" />
+                    <ComboBoxItem Content="Dark" />
+                    <ComboBoxItem Content="High Contrast" />
+                </ComboBox>
+            </ui:CardControl>
+
+            <ItemsControl ItemsSource="{Binding ViewModel.WindowCards, Mode=OneWay}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate >
+                        <ui:CardAction
+                    Margin="4"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Stretch"
+                    Command="{Binding ViewModel.OpenWindowCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:SettingPage}, Mode=OneWay}"
+                    CommandParameter="{Binding Value, Mode=OneTime}"
+                    Icon="{Binding Icon, Mode=OneTime}"
+                    IsChevronVisible="True">
+                            <StackPanel>
+                                <ui:TextBlock
+                            Margin="0"
+                            FontTypography="BodyStrong"
+                            Text="{Binding Name, Mode=OneTime}"
+                            TextWrapping="WrapWithOverflow" />
+                                <ui:TextBlock
+                            Appearance="Tertiary"
+                            Text="{Binding Description, Mode=OneTime}"
+                            TextWrapping="WrapWithOverflow" />
+                            </StackPanel>
+                        </ui:CardAction>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <ui:VirtualizingWrapPanel
+                    IsItemsHost="True"
+                    ItemSize="290,80"
+                    Orientation="Vertical"
+                    SpacingMode="Uniform"
+                    StretchItems="True" />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+            </ItemsControl>
+        </StackPanel>
+
+    </Grid>
+
+    
 </Page>
