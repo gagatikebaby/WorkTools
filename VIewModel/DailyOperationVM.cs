@@ -17,7 +17,7 @@ namespace WorkToolsSln.VIewModel
     public sealed partial class DailyOperationVM : ViewModel
     {
         private readonly INavigationService _navigationService;
-        private PathConfigInfo pathConfigInfo { get; set; }
+        private PathConfigInfo? pathConfigInfo { get; set; }
         private readonly string ConfigPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Configuration", "PathConfig.json");
         private ObservableCollection<ObservableCollection<ButtonItem>> buttonList = new ObservableCollection<ObservableCollection<ButtonItem>>();
         public ObservableCollection<ObservableCollection<ButtonItem>> ButtonList
@@ -69,9 +69,8 @@ namespace WorkToolsSln.VIewModel
                 new ObservableCollection<ButtonItem>
                 {
                     new ButtonItem { Content = "启动软件", ClickCommand = new RelayCommand(() => StartExeExecute(Path.Combine(pathConfigInfo.UnpackagePath, "Vanguard.exe"))) },
-                    new ButtonItem { Content = "打开Master", ClickCommand = new RelayCommand(() => OpenFileExecute(pathConfigInfo.MasterPath)) },
                     new ButtonItem { Content = "KKKiller", ClickCommand = new RelayCommand(() => StartKillerExecute()) },
-                    
+                    new ButtonItem { Content = "kill monitor", ClickCommand = new RelayCommand(() => killmonitorExecute()) },
                 },
                 new ObservableCollection<ButtonItem>
                 {
@@ -89,11 +88,40 @@ namespace WorkToolsSln.VIewModel
                 },
                 new ObservableCollection<ButtonItem>
                 {
+                    new ButtonItem { Content = "打开Master", ClickCommand = new RelayCommand(() => OpenFileExecute(pathConfigInfo.MasterPath)) },
                    new ButtonItem { Content = "工作站授权码", ClickCommand = new RelayCommand(() => CopyWorkStationExecute()) },
                    new ButtonItem { Content = "自动登录", ClickCommand = new RelayCommand(() => SetAutoLogin()) },
                 }
 
             };
+        }
+
+        private void killmonitorExecute()
+        {
+            string batpath = @"C:\Users\Administrator\Desktop\test-killer.bat";
+            if(File.Exists(batpath))
+            {
+                try
+                {
+                    Process _process = new Process();
+                    _process.StartInfo.FileName = batpath;
+                    _process.StartInfo.CreateNoWindow = true;
+                    _process.StartInfo.UseShellExecute = false;
+
+                    _process.Start();
+
+                    //_process.WaitForExit();//执行会卡死
+
+                }
+                catch (Exception ex)
+                {
+                    DBOperation.Instance.AddRecord("Error executing .bat file: " + ex.Message);
+                }
+            }
+            else
+            {
+                System.Windows.MessageBox.Show("test-killer.bat 文件不存在，请检查！");
+            }
         }
 
         private void SetAutoLogin()
