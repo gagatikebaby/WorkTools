@@ -96,6 +96,9 @@ namespace WorkToolsSln.VIewModel
             };
         }
 
+        /// <summary>
+        /// 此方法可能会导致WorkToolsSln.exe不能彻底退出
+        /// </summary>
         private void killmonitorExecute()
         {
             string batpath = @"C:\Users\Administrator\Desktop\test-killer.bat";

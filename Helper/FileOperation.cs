@@ -5,7 +5,7 @@ namespace WorkToolsSln.Helper
 {
     public class FileOperation
     {
-        public static T ReadConfig<T>(string filePath) where T : class
+        public static T? ReadConfig<T>(string filePath) where T : class
         {
             if (!File.Exists(filePath))
                 return null;

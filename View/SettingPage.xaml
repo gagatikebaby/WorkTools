@@ -18,11 +18,11 @@
 
     <Grid >
         <Grid.RowDefinitions>
-            <RowDefinition Height="500"/>
+            <RowDefinition Height="520"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Grid Grid.Row="0" Height="500" ClipToBounds="True">
-            <Rectangle VerticalAlignment="Bottom" Height="500" RadiusX="8" RadiusY="8" Panel.ZIndex="0">
+        <Grid Grid.Row="0" Height="520" ClipToBounds="True">
+            <Rectangle VerticalAlignment="Bottom" Height="520" RadiusX="8" RadiusY="8" Panel.ZIndex="0">
                 <Rectangle.Fill>
                     <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
                         <GradientStop Color="#171C26" Offset="0"/>
