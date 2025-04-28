@@ -70,7 +70,8 @@ namespace WorkToolsSln.VIewModel
                 {
                     new ButtonItem { Content = "启动软件", ClickCommand = new RelayCommand(() => StartExeExecute(Path.Combine(pathConfigInfo.UnpackagePath, "Vanguard.exe"))) },
                     new ButtonItem { Content = "KKKiller", ClickCommand = new RelayCommand(() => StartKillerExecute()) },
-                    new ButtonItem { Content = "kill monitor", ClickCommand = new RelayCommand(() => killmonitorExecute()) },
+                    new ButtonItem { Content = "模拟器", ClickCommand = new RelayCommand(() => OpenSimulator()) },
+                    //new ButtonItem { Content = "kill monitor", ClickCommand = new RelayCommand(() => killmonitorExecute()) },
                 },
                 new ObservableCollection<ButtonItem>
                 {
@@ -86,14 +87,146 @@ namespace WorkToolsSln.VIewModel
                     new ButtonItem { Content = "宠物 750 CFG1授权码", ClickCommand = new RelayCommand(() => CopyPet750Cfg1EXecute()) },
                     
                 },
+                 new ObservableCollection<ButtonItem>
+                {
+                   new ButtonItem { Content = "中文", ClickCommand = new RelayCommand(() => ChangeLanguage2Chinese()) },
+                   new ButtonItem { Content = "英文", ClickCommand = new RelayCommand(() => ChangeLanguage2English()) },
+                   new ButtonItem { Content = "俄文", ClickCommand = new RelayCommand(() => ChangeLanguage2Russian()) },
+                },
                 new ObservableCollection<ButtonItem>
                 {
-                    new ButtonItem { Content = "打开Master", ClickCommand = new RelayCommand(() => OpenFileExecute(pathConfigInfo.MasterPath)) },
+                   new ButtonItem { Content = "打开Master", ClickCommand = new RelayCommand(() => OpenFileExecute(pathConfigInfo.MasterPath)) },
                    new ButtonItem { Content = "工作站授权码", ClickCommand = new RelayCommand(() => CopyWorkStationExecute()) },
-                   new ButtonItem { Content = "自动登录", ClickCommand = new RelayCommand(() => SetAutoLogin()) },
+                   //new ButtonItem { Content = "自动登录", ClickCommand = new RelayCommand(() => SetAutoLogin()) },
+                   //new ButtonItem { Content = "模拟器", ClickCommand = new RelayCommand(() => OpenSimulator()) },
+                   new ButtonItem { Content = "kill monitor", ClickCommand = new RelayCommand(() => killmonitorExecute()) },
                 }
 
+
             };
+        }
+
+        /// <summary>
+        /// 打开模拟器
+        /// </summary>
+        private void OpenSimulator()
+        {
+            string _SourcePath = Path.Combine(pathConfigInfo.MasterPath, "Package-ServiceTool", "VersionConverter", "Convert2SimulatorALS.exe");
+            string _DestPath = pathConfigInfo.UnpackagePath;
+            string _DestFile = Path.Combine(pathConfigInfo.UnpackagePath, "Convert2SimulatorALS.exe");
+            if (!File.Exists(_SourcePath))
+            {
+                InitMessageBox();
+                _messagebox.Content = $"失败，路径{_SourcePath}不存在！";
+                _messagebox.ShowDialogAsync();
+                return;
+            }
+            try
+            {
+                File.Copy(_SourcePath, _DestFile, true);
+
+                // 成功拷贝后，运行 exe
+                ProcessStartInfo startInfo = new ProcessStartInfo
+                {
+                    FileName = _DestFile,
+                    CreateNoWindow = false, // 创建窗口
+                    WorkingDirectory = _DestPath, // 可选，设置工作目录
+                    UseShellExecute = false // 让它以系统默认方式打开
+                };
+                Process.Start(startInfo);
+            }
+            catch (Exception ex)
+            {
+                InitMessageBox();
+                _messagebox.Content = $"出错：{ex.Message}";
+                _messagebox.ShowDialogAsync();
+            }
+        }
+
+        /// <summary>
+        /// 切中文
+        /// </summary>
+        private void ChangeLanguage2Chinese()
+        {
+            string _path = Path.Combine(pathConfigInfo.UnpackagePath, "Configuration", "MultiLanguageConfig.json");
+            string _path2 = Path.Combine(pathConfigInfo.UnpackagePath, "Configuration", "MiscellaneousConfig.json");
+
+            if (!File.Exists(_path) || !File.Exists(_path2))
+            {
+                InitMessageBox();
+                _messagebox.Content = $"失败，路径{_path}或{_path2}不存在！";
+                _messagebox.ShowDialogAsync();
+                return;
+            }
+            MultiLanguageConfig ret = FileOperation.ReadConfig<MultiLanguageConfig>(_path);
+            MiscellaneousConfig ret2 = FileOperation.ReadConfig<MiscellaneousConfig>(_path2);
+
+            ret.CurrentCulture = "zh-CN";
+            ret2.SpecificCharacterSet = "ISO_IR 192";
+
+            FileOperation.WriteConfig<MultiLanguageConfig>(_path,ret);
+            FileOperation.WriteConfig<MiscellaneousConfig>(_path2, ret2);
+
+            InitMessageBox();
+            _messagebox.Content = "切换成功！";
+            _messagebox.ShowDialogAsync();
+
+        }
+
+        /// <summary>
+        /// 切英文
+        /// </summary>
+        private void ChangeLanguage2English()
+        {
+            string _path = Path.Combine(pathConfigInfo.UnpackagePath, "Configuration", "MultiLanguageConfig.json");
+            string _path2 = Path.Combine(pathConfigInfo.UnpackagePath, "Configuration", "MiscellaneousConfig.json");
+            if (!File.Exists(_path) || !File.Exists(_path2))
+            {
+                InitMessageBox();
+                _messagebox.Content = $"失败，路径{_path}或{_path2}不存在！";
+                _messagebox.ShowDialogAsync();
+                return;
+            }
+
+            MultiLanguageConfig ret = FileOperation.ReadConfig<MultiLanguageConfig>(_path);
+            MiscellaneousConfig ret2 = FileOperation.ReadConfig<MiscellaneousConfig>(_path2);
+
+            ret.CurrentCulture = "en-US";
+            ret2.SpecificCharacterSet = "ISO_IR 100";
+
+            FileOperation.WriteConfig<MultiLanguageConfig>(_path, ret);
+            FileOperation.WriteConfig<MiscellaneousConfig>(_path2, ret2);
+            InitMessageBox();
+            _messagebox.Content = "切换成功！";
+            _messagebox.ShowDialogAsync();
+        }
+
+        /// <summary>
+        /// 切俄文
+        /// </summary>
+        private void ChangeLanguage2Russian()
+        {
+            string _path = Path.Combine(pathConfigInfo.UnpackagePath, "Configuration", "MultiLanguageConfig.json");
+            string _path2 = Path.Combine(pathConfigInfo.UnpackagePath, "Configuration", "MiscellaneousConfig.json");
+
+            if (!File.Exists(_path) || !File.Exists(_path2))
+            {
+                InitMessageBox();
+                _messagebox.Content = $"失败，路径{_path}或{_path2}不存在！";
+                _messagebox.ShowDialogAsync();
+                return;
+            }
+            MultiLanguageConfig ret = FileOperation.ReadConfig<MultiLanguageConfig>(_path);
+            MiscellaneousConfig ret2 = FileOperation.ReadConfig<MiscellaneousConfig>(_path2);
+
+            ret.CurrentCulture = "ru-RU";
+            ret2.SpecificCharacterSet = "ISO_IR 100";
+
+            FileOperation.WriteConfig<MultiLanguageConfig>(_path, ret);
+            FileOperation.WriteConfig<MiscellaneousConfig>(_path2, ret2);
+            InitMessageBox();
+            _messagebox.Content = "切换成功！";
+            _messagebox.ShowDialogAsync();
         }
 
         /// <summary>

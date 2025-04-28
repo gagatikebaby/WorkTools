@@ -8,6 +8,7 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="DailyOperationPage">
+    <Grid>
     <StackPanel  Margin="0,0,0,24">
         <Border Height="28"/>
         <ui:CardControl Margin="0,0,0,12" Icon="{ui:SymbolIcon Symbol=ArrowDown16}">
@@ -203,4 +204,5 @@
             </DataGrid.Columns>
         </DataGrid>
     </StackPanel>
+    </Grid>
 </Page>
